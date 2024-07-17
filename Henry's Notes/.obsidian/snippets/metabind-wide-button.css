@@ -1,0 +1,21 @@
+.metabind-wide-button > button{
+    font-weight: var(--inline-title-weight);
+    font-size: var(--inline-title-size);
+    line-height: var(--inline-title-line-height);
+    font-style: var(--inline-title-style);
+    font-variant: var(--inline-title-variant);
+    font-family: var(--inline-title-font);
+    margin-bottom: var(--inline-title-margin-bottom);
+    letter-spacing: -0.015em;
+    color: var(--inline-title-color);
+    white-space: pre-wrap;
+
+    width: 100%;
+    height: 75px;
+    font-size: x-large;
+}
+
+.metabind-wide-button .mb-icon-wrapper, .metabind-wide-button .mb-icon-wrapper > svg{
+    width: 50px;
+    height: 50px;
+}

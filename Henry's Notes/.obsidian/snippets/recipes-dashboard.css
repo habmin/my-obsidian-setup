@@ -1,0 +1,7 @@
+.dashboard {
+  --banner-height: 175px;
+}
+
+.dashboard .markdown-preview-section .title {
+    top: 70px;
+}

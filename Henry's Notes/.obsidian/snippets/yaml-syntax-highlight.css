@@ -1,0 +1,19 @@
+/* color YAML value text */
+span.cm-meta.cm-hmd-frontmatter + span.cm-hmd-frontmatter {
+    color: #45CF6E;
+}
+
+/* color YAML value - if it's a number */
+span.cm-number.cm-hmd-frontmatter {
+    color: #A881FF !important;
+}
+
+/* color YAML key text */
+span.cm-atom.cm-hmd-frontmatter {
+    color: #53DFDD;
+}
+
+/* color YAML separator text */
+span.cm-meta.cm-hmd-frontmatter {
+    color: #FB99CD;
+}

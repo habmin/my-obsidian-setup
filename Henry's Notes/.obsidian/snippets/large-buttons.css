@@ -1,0 +1,20 @@
+.large-buttons > button{
+    font-weight: var(--inline-title-weight);
+    font-size: var(--inline-title-size);
+    line-height: var(--inline-title-line-height);
+    font-style: var(--inline-title-style);
+    font-variant: var(--inline-title-variant);
+    font-family: var(--inline-title-font);
+    margin-bottom: var(--inline-title-margin-bottom);
+    letter-spacing: -0.015em;
+    color: var(--inline-title-color);
+    white-space: pre-wrap;
+
+    height: 60px;
+    font-size: large;
+}
+
+.large-buttons .mb-icon-wrapper, .large-buttons .mb-icon-wrapper > svg{
+  width: 40px;
+  height: 40px;
+}

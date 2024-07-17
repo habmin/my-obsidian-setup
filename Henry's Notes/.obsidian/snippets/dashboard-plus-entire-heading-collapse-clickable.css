@@ -1,0 +1,7 @@
+/* Makes the entire header line clickable to collapse, not just the indicator */
+
+.dashboard .heading-collapse-indicator {
+    width: 100%;
+    z-index: 1;
+}
+

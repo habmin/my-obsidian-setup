@@ -1,0 +1,5 @@
+@media print { 
+    .print a{ 
+        color:  #0000EE; 
+    }
+}

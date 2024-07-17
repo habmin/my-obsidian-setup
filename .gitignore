@@ -1,0 +1,10 @@
+/*
+!.gitignore
+!/Henry\'s\ Notes
+/Henry\'s\ Notes/*
+!/Henry\'s\ Notes/_scripts/
+!/Henry\'s\ Notes/_templates/
+!/Henry\'s\ Notes/Functions/
+!/Henry\'s\ Notes/.obsidian/
+/Henry\'s\ Notes/.obsidian/*
+!/Henry\'s\ Notes/.obsidian/snippets/
