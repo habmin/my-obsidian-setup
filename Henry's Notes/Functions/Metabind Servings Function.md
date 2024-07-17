@@ -1,23 +1,33 @@
 ---
-input_text_area: |-
-  1 tablespoon olive oil
-  1 yellow onion, diced
-  6 cloves garlic, minced
-  1 tablespoon curry powder
-  1 teaspoon cumin
-  ½ teaspoon ground ginger
-  ¼ teaspoon ground cinnamon
-  1 cup split red lentils
-  1 (15 oz.) can garbanzo beans, drained
-  1 (13.5 oz.) can full fat coconut milk
-  32 oz. vegetable broth
-  juice of 1 lime (about 2 tablespoons)
-  Kosher salt
-  fresh cracked pepper
-  fresh chopped cilantro for garnish
+input_text_area: |-2
+  
+
+      1 cup (240ml) homemade or instant dashi (see notes)
+
+      2 tablespoons (30ml) dry sake
+
+      1 tablespoon (15ml) soy sauce, plus more to taste
+
+      1 tablespoon (15g) sugar, plus more to taste
+
+      1 large onion (about 6 ounces; 170g), thinly sliced
+
+      12 ounces (340g) boneless, skinless chicken thighs or breast, thinly sliced
+
+      3 scallions, ends trimmed and thinly sliced, divided
+
+      2 stems mitsuba (optional; see note)
+
+      3 to 4 large eggs (see note)
+
+  To Serve:
+
+      2 cups cooked white rice
+
+      Togarashi (see note
 regex_expression: /^(\s*)(\d*\.?\/?\d+)/gm
 regex_group: $2
-regex_replace: "- \\`VIEW[{metabind-servings} / {servings} * $2][math]\\` "
+regex_replace: "- \\`VIEW[{metabind-servings} / {servings} * $2][math]\\`"
 regex_combine: |-2
       1 yellow onion ($0.37)
       4 cloves garlic ($0.34)
@@ -38,21 +48,20 @@ regex_combine: |-2
       4 oz. cream cheese ($1.10)
       ½ cup sour cream ($0.45).replace(/^(\s*)(\d*\.?\/?\d+)/gm, - \`VIEW[{metabind-servings} / {servings} * $2][math]\`)
 output_text_area: |-
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` tablespoon olive oil
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` yellow onion, diced
-  - `VIEW[{metabind-servings} / {servings} * 6][math]` cloves garlic, minced
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` tablespoon curry powder
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` teaspoon cumin
-  ½ teaspoon ground ginger
-  ¼ teaspoon ground cinnamon
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` cup split red lentils
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` (15 oz.) can garbanzo beans, drained
-  - `VIEW[{metabind-servings} / {servings} * 1][math]` (13.5 oz.) can full fat coconut milk
-  - `VIEW[{metabind-servings} / {servings} * 32][math]` oz. vegetable broth
-  juice of 1 lime (about 2 tablespoons)
-  Kosher salt
-  fresh cracked pepper
-  fresh chopped cilantro for garnish
+  - `VIEW[{metabind-servings} / {servings} * 1][math]` cup (240ml) homemade or instant dashi (see notes)
+  - `VIEW[{metabind-servings} / {servings} * 2][math]` tablespoons (30ml) dry sake
+  - `VIEW[{metabind-servings} / {servings} * 1][math]` tablespoon (15ml) soy sauce, plus more to taste
+  - `VIEW[{metabind-servings} / {servings} * 1][math]` tablespoon (15g) sugar, plus more to taste
+  - `VIEW[{metabind-servings} / {servings} * 1][math]` large onion (about 6 ounces; 170g), thinly sliced
+  - `VIEW[{metabind-servings} / {servings} * 12][math]` ounces (340g) boneless, skinless chicken thighs or breast, thinly sliced
+  - `VIEW[{metabind-servings} / {servings} * 3][math]` scallions, ends trimmed and thinly sliced, divided
+  - `VIEW[{metabind-servings} / {servings} * 2][math]` stems mitsuba (optional; see note)
+  - `VIEW[{metabind-servings} / {servings} * 3][math]` to 4 large eggs (see note)
+
+  To Serve:
+  - `VIEW[{metabind-servings} / {servings} * 2][math]` cups cooked white rice
+
+      Togarashi (see note
 ---
 # Function
 ## Input
