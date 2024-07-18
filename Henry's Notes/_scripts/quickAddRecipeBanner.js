@@ -12,7 +12,7 @@ module.exports = async function recipeBanner(params) {
         new Notice("Recipe name not found in the note's frontmatter.");
         return;
     }
-    const newImageFileName = match[1].toLowerCase().replace(/\s+/g, '_');
+    const newImageFileName = match[1].toLowerCase().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
     
     // 2. Get the first pasted image in the note (assumes its the pasted one)
     const imageRegex = /!\[\[(.*?)\]\]/;
