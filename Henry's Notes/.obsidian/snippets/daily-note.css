@@ -21,15 +21,15 @@
 } */
 
 .daily-note .contains-task-list{
-    background: var(--background-primary);
+    background: linear-gradient(rgb(40, 40, 40), var(--background-primary) 140%);
     border-radius: 10px;
     padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
-.HyperMD-list-line {
-    background-color: var(--background-primary);
-    margin: 100px;
-    /* border-radius: 10px; */
+.is-mobile .daily-note .contains-task-list{
+    background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10) 140%);
+    border-radius: 10px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
 .daily-note .contains-task-list .contains-task-list {
