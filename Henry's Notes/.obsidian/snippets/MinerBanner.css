@@ -50,6 +50,22 @@ span[src$="bannerimg"] img {
     position: absolute;
 }
 
+span[src$="bannerimgfade"] img {
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0px;
+    max-height: 12em;
+    min-height: 12em;
+    object-fit: cover;
+    border-radius: 1px;
+    position: absolute;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
 /* ############################################################################## */
 /* ########################## */
 /* EXTENSION BACKGROUND IMAGE */
@@ -334,6 +350,8 @@ span[src$="bannericoncc"] img {
     height: calc(var(--bannericon-wh) / 5);
     margin: unset;
     object-fit: inherit;
+
+    white-space: nowrap;
 }
 
 .callout[data-callout="bannericonc"] .callout-content>p>span>img {

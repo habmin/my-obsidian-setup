@@ -1,14 +1,54 @@
-.daily-note h1, .daily-note .cm-header-1 {
+.daily-note .image-embed img:first-of-type {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.daily-note .inline-title {
+    display: none;
+}
+
+/* .daily-note h1, .daily-note .cm-header-1 {
     font-family: 'Baskerville', 'Inter', sans-serif;
     letter-spacing: 0.07em;
     font-weight: 600;
-    color: var(--text-accent)
+    color: var(--text-accent);
+} */
+
+.daily-note .contains-task-list{
+    background: var(--background-primary);
+    border-radius: 10px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
-.daily-note .contains-task-list {
-    background-color: black;
-    border-radius: 10px;
-    padding: 1rem 0.5rem 1rem 0.5rem;
-    display: block;
-    
+.HyperMD-list-line {
+    background-color: var(--background-primary);
+    margin: 100px;
+    /* border-radius: 10px; */
 }
+
+.daily-note .contains-task-list .contains-task-list {
+    background: initial;
+    background-color: initial;
+    border-radius: initial;
+    padding: initial;
+}
+
+/* 
+If you want the task list boxes to fit to character length
+This will make the div behave like a table, shrinking to fit its children
+ */
+/* .daily-note .contains-task-list {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    display: table; 
+}
+
+.daily-note .contains-task-list .contains-task-list {
+    background-color: initial;
+    border-radius: initial;
+    padding: initial;
+} */
+

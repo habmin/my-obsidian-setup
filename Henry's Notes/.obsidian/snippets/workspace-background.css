@@ -1,0 +1,17 @@
+.theme-dark .workspace {
+    backdrop-filter: brightness(0.35) blur(5px); /* filter for dark mode */
+    background-color: transparent;
+}
+.horizontal-main-container { /* below is the background image. Change it to whatever you want */
+    background-image: "close-up-green-jade-texture-4k.jpg";
+    background-size: cover;
+}
+.workspace-split.mod-root {
+    background-color: var(--background-primary);
+}
+
+body {
+    --background-primary: transparent;
+    --background-secondary: transparent;
+    --divider-width: 0px;
+}
