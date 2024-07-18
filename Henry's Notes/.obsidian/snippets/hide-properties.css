@@ -1,3 +1,3 @@
-.hide-properties .metadata-container {
-  display: inherit;
+.hide-properties {
+  --metadata-display-editing: none
 }
