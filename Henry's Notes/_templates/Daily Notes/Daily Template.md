@@ -6,7 +6,7 @@ cssclasses:
 <%*
 const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_notes').children.length;
 -%>
-![[<% (Math.floor(moment.now() / 86400000) % numOfFiles).toString().padStart(3, '0') %>.jpg##bannerimgfade]]
+![[<% (Math.ceil(moment.now() / 86400000) % numOfFiles).toString().padStart(3, '0') %>.jpg##bannerimgfade]]
 > [!bannericonc]
 > <% tp.date.now('MMM D YY') %>
 # Morning
