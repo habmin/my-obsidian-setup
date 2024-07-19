@@ -13,12 +13,15 @@
     display: none;
 }
 
-/* .daily-note h1, .daily-note .cm-header-1 {
-    font-family: 'Baskerville', 'Inter', sans-serif;
-    letter-spacing: 0.07em;
-    font-weight: 600;
-    color: var(--text-accent);
-} */
+.daily-note .callout[data-callout="bannericonc"] .callout-content>p {
+    font-family: 'Istok Web', 'Inter';
+}
+
+.daily-note h1, .daily-note .cm-header-1 {
+    font-family: 'Bellota Text', 'Inter', sans-serif;
+    /* letter-spacing: 0.07em;
+    font-weight: 600; */
+}
 
 .daily-note .contains-task-list{
     background: linear-gradient(rgb(40, 40, 40), var(--background-primary) 140%);
