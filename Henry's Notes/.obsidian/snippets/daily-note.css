@@ -14,13 +14,87 @@
 }
 
 .daily-note .callout[data-callout="bannericonc"] .callout-content>p {
-    font-family: 'Istok Web', 'Inter';
+    font-family: 'Josefin Sans', 'Inter';
+    font-weight: 700;
 }
 
-.daily-note h1, .daily-note .cm-header-1 {
+.daily-note h1, .daily-note .cm-header-1, 
+.daily-note h2, .daily-note .cm-header-2, 
+.daily-note h3, .daily-note .cm-header-3 {
+    width: fit-content;
+    position: relative;
     font-family: 'Bellota Text', 'Inter', sans-serif;
+    /* background: linear-gradient(#0df237, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     */
     /* letter-spacing: 0.07em;
     font-weight: 600; */
+}
+
+.daily-note .heading-collapse-indicator {
+    width: 100%;
+    z-index: 1;
+}
+
+.daily-note h1::after, 
+.daily-note h2::after,
+.daily-note h3::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0%;
+    background: white;
+    transition: all 0.3s;
+}
+
+.daily-note h1:hover::after, 
+.daily-note h2:hover::after,
+.daily-note h3:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.daily-note .contains-task-list {
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.daily-note .contains-task-list:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.daily-note .progress-bar {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 2.3rem;
+    background: linear-gradient(rgb(40, 40, 40), var(--background-primary) 140%);
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 0.5rem 0.0rem 1.0rem 0.0rem;
+}
+
+.is-mobile .daily-note .progress-bar {
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10) 140%);
+}
+
+.daily-note .progress-bar:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.daily-note .progress-bar .left-pb {
+    background: initial;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    height: 100%;
+    background: radial-gradient(49% 81% at 45% 47%, #77D926 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #AFD926FF 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #40C652FF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #26D953FF 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #26D9ABFF 0%, #B2D926FF 100%);
 }
 
 .daily-note .contains-task-list{
@@ -31,8 +105,6 @@
 
 .is-mobile .daily-note .contains-task-list{
     background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10) 140%);
-    border-radius: 10px;
-    padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
 .daily-note .contains-task-list .contains-task-list {
@@ -40,6 +112,8 @@
     background-color: initial;
     border-radius: initial;
     padding: initial;
+    transition: initial;
+    box-shadow: initial;
 }
 
 /* 
@@ -59,3 +133,9 @@ This will make the div behave like a table, shrinking to fit its children
     padding: initial;
 } */
 
+/* Glassmorphism effect */
+/* .daily-note .contains-task-list {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+} */
