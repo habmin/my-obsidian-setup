@@ -1,0 +1,20 @@
+a {
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--text-accent);
+    transition: all 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+    left: 0;
+}
