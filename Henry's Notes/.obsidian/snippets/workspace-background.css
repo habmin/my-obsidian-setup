@@ -11,7 +11,7 @@ https://i.imgur.com/8qT1VWl.jpeg
 */
 
 .theme-dark .workspace{
-    backdrop-filter: brightness(0.20) blur(15px);
+    backdrop-filter: brightness(0.25) blur(15px);
     background-color: transparent;
 }
 .horizontal-main-container {
