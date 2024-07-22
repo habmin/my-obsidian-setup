@@ -1,17 +1,25 @@
-.theme-dark .workspace {
-    backdrop-filter: brightness(0.35) blur(5px); /* filter for dark mode */
+.theme-dark .workspace{
+    backdrop-filter: brightness(0.20) blur(15px);
     background-color: transparent;
 }
-.horizontal-main-container { /* below is the background image. Change it to whatever you want */
-    background-image: "close-up-green-jade-texture-4k.jpg";
+.horizontal-main-container {
+    background-image: url("https://i.imgur.com/GbXWXJL.jpeg");
     background-size: cover;
+    
 }
 .workspace-split.mod-root {
     background-color: var(--background-primary);
 }
-
-body {
+.app-container {
     --background-primary: transparent;
     --background-secondary: transparent;
     --divider-width: 0px;
+}
+
+.menu {
+    background-color: var(--background-primary);
+}
+
+.nav-files-container {
+    background-color: transparent;
 }

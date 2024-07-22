@@ -73,10 +73,11 @@
     border-radius: 10px;
     width: 100%;
     height: 2.3rem;
-    background: linear-gradient(rgb(40, 40, 40), var(--background-primary) 140%);
+    background: linear-gradient(rgba(40, 40, 40, 0.85), rgba(30, 30, 30, 0.85) 140%);
     transition: box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin: 0.5rem 0.0rem 1.0rem 0.0rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .is-mobile .daily-note .progress-bar {
@@ -100,9 +101,10 @@
 }
 
 .daily-note .contains-task-list{
-    background: linear-gradient(rgb(40, 40, 40), var(--background-primary) 140%);
+    background: linear-gradient(rgba(40, 40, 40, 0.85), rgba(30, 30, 30, 0.85) 140%);
     border-radius: 10px;
     padding: 0.5rem 2rem 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .is-mobile .daily-note .contains-task-list{
@@ -111,11 +113,13 @@
 
 .daily-note .contains-task-list .contains-task-list {
     background: initial;
+    backdrop-filter: initial;
     background-color: initial;
     border-radius: initial;
     padding: initial;
     transition: initial;
     box-shadow: initial;
+    border: initial;
 }
 
 /* 
