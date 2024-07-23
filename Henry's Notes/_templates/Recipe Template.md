@@ -28,8 +28,7 @@ cssclasses:
 
 # Ingredients
 Servings: `INPUT[number(placeholder({servings})):metabind-servings]`
-![[Metabind Servings Function#Function]]
-- `VIEW[{metabind-servings} / {servings} * 1][math]`
+
 ### My add-ons
 - `VIEW[{metabind-servings} / {servings} * 1][math]`
 # Instructions
