@@ -4,28 +4,28 @@ List of background image URLs
 https://i.imgur.com/GbXWXJL.jpeg
 https://i.imgur.com/3n59TdD.jpeg
 https://i.imgur.com/zCdQocq.jpeg
+https://i.imgur.com/BCJB2if.jpeg - rotated 180 degrees of last one
 https://i.imgur.com/tgJCm73.jpeg
 https://i.imgur.com/XJUIIzH.jpeg
 https://i.imgur.com/egHWdmn.jpeg
-https://i.imgur.com/8qT1VWl.jpeg 
+https://i.imgur.com/8qT1VWl.jpeg
 */
 
 .theme-dark .workspace{
-    backdrop-filter: brightness(0.17) blur(10px);
+    backdrop-filter: brightness(0.17) blur(15px);
     background-color: transparent;
 }
 .horizontal-main-container {
-    background-image: url("https://i.imgur.com/zCdQocq.jpeg");
+    background-image: url("https://i.imgur.com/BCJB2if.jpeg");
     background-size: cover;
 }
 
-body {
+body:not(.is-mobile) {
     --background-primary: transparent;
     --background-secondary: transparent;
     --divider-width: 0px;
 }
-
-.menu, .prompt, .modal, .suggestion-container{
+.menu, .prompt, .modal, .suggestion-container, .status-bar, .workspace-tab-header.is-active{
     background-color: rgba(30, 30, 30, 1);
 }
 
@@ -34,6 +34,13 @@ body {
     border-radius: 15px;
     padding: 30px;
     background-color: rgba(30, 30, 30, 0.9);
+}
+
+.is-mobile .cm-sizer, .is-mobile .markdown-preview-sizer {
+    margin-top: 1.2rem;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: rgba(20, 20, 20, 0.9);
 }
 
 .workspace-leaf-content[data-mode="source"] .inline-title {
