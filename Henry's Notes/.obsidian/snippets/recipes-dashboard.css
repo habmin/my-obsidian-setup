@@ -1,7 +1,15 @@
-.dashboard {
+.recipes-dashboard {
   --banner-height: 175px;
 }
 
-.dashboard .markdown-preview-section .title {
+.recipes-dashboard .markdown-preview-section .title {
     top: 70px;
+}
+
+.recipes-dashboard .markdown-preview-sizer {
+  margin-top: 175px;
+}
+
+.recipes-dashboard .mod-header {
+    margin-top: 0;
 }
