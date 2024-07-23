@@ -1,13 +1,29 @@
+# Usual stuff
 .DS_Store
+
+# All root files except the gitignore, readme and license
 /*
 !.gitignore
 !README.md
 !_LICENSE-CC-BY-SA.md
+
+# Track _script, _templates_ and Functions folders
 !/Henry\'s\ Notes
 /Henry\'s\ Notes/*
 !/Henry\'s\ Notes/_scripts/
 !/Henry\'s\ Notes/_templates/
 !/Henry\'s\ Notes/Functions/
+
+# Track snippets
 !/Henry\'s\ Notes/.obsidian/
 /Henry\'s\ Notes/.obsidian/*
 !/Henry\'s\ Notes/.obsidian/snippets/
+
+# Track the crop_image bash script
+!/Henry\'s\ Notes/_attachments/
+/Henry\'s\ Notes/_attachments/*
+!/Henry\'s\ Notes/_attachments/_banners/
+/Henry\'s\ Notes/_attachments/_banners/*
+!/Henry\'s\ Notes/_attachments/_banners/_recipes/
+/Henry\'s\ Notes/_attachments/_banners/_recipes/*
+!/Henry\'s\ Notes/_attachments/_banners/_recipes/crop_image.sh
