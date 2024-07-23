@@ -11,27 +11,31 @@ https://i.imgur.com/8qT1VWl.jpeg
 */
 
 .theme-dark .workspace{
-    backdrop-filter: brightness(0.25) blur(15px);
+    backdrop-filter: brightness(0.17) blur(10px);
     background-color: transparent;
 }
 .horizontal-main-container {
-    background-image: url("https://i.imgur.com/GbXWXJL.jpeg");
+    background-image: url("https://i.imgur.com/zCdQocq.jpeg");
     background-size: cover;
-    
 }
-.workspace-split.mod-root {
-    background-color: var(--background-primary);
-}
-.app-container {
+
+body {
     --background-primary: transparent;
     --background-secondary: transparent;
     --divider-width: 0px;
 }
 
-.menu {
-    background-color: var(--background-primary);
+.menu, .prompt, .modal, .suggestion-container{
+    background-color: rgba(30, 30, 30, 1);
 }
 
-.nav-files-container {
-    background-color: transparent;
+.cm-sizer, .markdown-preview-sizer {
+    margin-top: 1.2rem;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+.workspace-leaf-content[data-mode="source"] .inline-title {
+    margin-top: 0.901rem;
 }

@@ -65,7 +65,7 @@
 }
 
 .daily-note .contains-task-list:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
 }
 
 .daily-note .progress-bar {
@@ -76,7 +76,7 @@
     background: linear-gradient(rgba(40, 40, 40, 0.85), rgba(30, 30, 30, 0.85) 140%);
     transition: box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin: 0.5rem 0.0rem 1.0rem 0.0rem;
+    margin: 0.7rem 0.0rem 0.7rem 0.0rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -87,7 +87,7 @@
 }
 
 .daily-note .progress-bar:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
 }
 
 .daily-note .progress-bar .left-pb {
