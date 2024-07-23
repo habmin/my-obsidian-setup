@@ -11,14 +11,11 @@ const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_
 > <% tp.date.now('MMM D YY') %>
 # :LiListTodo: Tasks (`$=dv.current().file.tasks.where(t => t.completed).length`/`$=dv.current().file.tasks.length`)
 ```dataviewjs
-const charLimit = 43;
 const completed = dv.current().file.tasks.where(t => t.completed).length;
-const incompleted = dv.current().file.tasks.where(t => !t.completed).length;
-const totalTasks = completed + incompleted;
-const completedCells = "▮".repeat(Math.floor(completed * (charLimit / totalTasks)));
-const incompletedCells = "▯".repeat(Math.floor(incompleted * (charLimit / totalTasks)));
+const totalTasks = dv.current().file.tasks.length;
+const completedFill = Math.floor(completed * (100 / totalTasks));
 
-dv.span(completedCells.padEnd(charLimit, "▯"));
+dv.el("div", dv.el("div","", {cls:"left-pb", attr: {style: `width: ${completedFill}%`}}), {cls: "progress-bar"}); 
 ```
 ## :LiSun: Morning
 <% tp.file.include("[[Morning Template]]") %>
