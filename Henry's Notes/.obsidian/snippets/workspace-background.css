@@ -37,12 +37,12 @@ body:not(.is-mobile) {
 }
 
 .is-mobile .cm-sizer, .is-mobile .markdown-preview-sizer {
-    margin-top: 1.2rem;
-    border-radius: 15px;
-    padding: 30px;
-    background-color: rgba(20, 20, 20, 0.9);
+    margin-top: initial;
+    border-radius: initial;
+    padding: initial;
+    background-color: initial;
 }
 
-.workspace-leaf-content[data-mode="source"] .inline-title {
+body:not(.is-mobile) .workspace-leaf-content[data-mode="source"] .inline-title {
     margin-top: 0.901rem;
 }
