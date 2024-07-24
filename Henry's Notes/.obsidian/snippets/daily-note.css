@@ -90,7 +90,83 @@
     border: initial;
 }
 
-/* 
+.daily-note .nav-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+.daily-note .nav-bar a {
+    text-decoration: none;
+    color: var(--text-normal);
+    display: flex;
+    align-items: center;
+}
+
+.daily-note .nav-button {
+    position: relative;
+}
+
+.daily-note .nav-bar .internal-link:hover {
+    text-decoration: none !important;
+    color: var(--text-normal) !important;
+}
+
+.daily-note .nav-button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 18px;
+    background: white;
+    transition: all 0.3s;
+    transform: scaleX(0);
+}
+
+.daily-note .nav-button.prev::after {
+    transform-origin: 100%;
+}
+
+.daily-note .nav-button.next::after {
+    transform-origin: 0%;
+}
+
+.daily-note .nav-button:hover::after {
+    transform: scaleX(1);
+}
+
+
+.daily-note .nav-bar h1::after {
+    position: initial;
+    width: initial;
+    height: initial;
+    bottom: initial;
+    background: initial;
+    transition: all 0.3s;
+}
+
+.daily-note .nav-bar h1::after {
+    width: initial;
+    left: 0;
+}
+
+.daily-note .nav-button.disabled {
+    pointer-events: none;
+}
+
+.daily-note .nav-button.disabled h1 {
+    color: var(--text-faint);
+}
+
+.daily-note .nav-button.disabled svg {
+    stroke: var(--text-faint);
+}
+
+/* .workspace-leaf-content[data-mode="preview"] .nav-bar {
+    top: -20px;
+} */
+/*
 If you want the task list boxes to fit to character length
 This will make the div behave like a table, shrinking to fit its children
  */
