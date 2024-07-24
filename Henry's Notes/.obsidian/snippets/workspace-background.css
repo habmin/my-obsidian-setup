@@ -41,7 +41,7 @@ body:not(.is-mobile) {
     margin-top: 1.2rem;
     border-radius: 15px;
     padding: 30px;
-    background-color: rgba(30, 30, 30, 0.9);
+    background-color: rgba(30, 30, 30, 1);
 }
 
 .is-mobile .cm-sizer, .is-mobile .markdown-preview-sizer {
