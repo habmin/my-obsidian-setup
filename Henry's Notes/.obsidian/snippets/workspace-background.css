@@ -25,7 +25,15 @@ body:not(.is-mobile) {
     --background-secondary: transparent;
     --divider-width: 0px;
 }
-.menu, .prompt, .modal, .suggestion-container, .status-bar, .workspace-tab-header.is-active{
+.menu, 
+.prompt, 
+.modal, 
+.suggestion-container, 
+.status-bar, 
+.workspace-tab-header.is-active, 
+.suggestion-container.mod-search-suggestion .suggestion,
+.canvas-menu,
+.projects--popover {
     background-color: rgba(30, 30, 30, 1);
 }
 
