@@ -24,6 +24,15 @@ end-date:
 result: 
 tags:
 ---
+# Overview
+- Company: `VIEW[{company}][link]`
+- Role: `VIEW[{role}][text]`
+- Posting: `VIEW[{posting}][link]`
+- Date Posted: `VIEW[{date-posted}][text]`
+- Exp. Level: `VIEW[{exp-level}][text]`
+- Pay range: `VIEW[{pay-range}][text]`
 # Description
 
 # Timeline
+- Date Applied: `VIEW[{date-applied}][text]`
+- Result: `$= dv.current().file.frontmatter['result'] ?? 'Pending'`
