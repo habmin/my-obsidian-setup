@@ -16,7 +16,7 @@
 .daily-note .callout[data-callout="bannericonc"] .callout-content>p {
     font-family: 'Josefin Sans', 'Inter';
     font-weight: 700;
-    text-shadow: 0px 5px 5px black;
+    text-shadow: 0px 1px 7px black;
     color: white;
 }
 
