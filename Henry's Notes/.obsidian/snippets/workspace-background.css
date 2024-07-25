@@ -12,11 +12,11 @@ https://i.imgur.com/8qT1VWl.jpeg
 */
 
 .theme-dark .workspace{
-    backdrop-filter: brightness(0.17) blur(15px);
+    backdrop-filter: saturate(1.8) brightness(0.22) blur(20px);
     background-color: transparent;
 }
 .horizontal-main-container {
-    background-image: url("https://i.imgur.com/BCJB2if.jpeg");
+    background-image: url("https://i.imgur.com/8qT1VWl.jpeg");
     background-size: cover;
 }
 
@@ -41,7 +41,7 @@ body:not(.is-mobile) {
     margin-top: 1.2rem;
     border-radius: 15px;
     padding: 30px;
-    background-color: rgba(30, 30, 30, 1);
+    background-color: rgb(30, 30, 30);
 }
 
 .is-mobile .cm-sizer, .is-mobile .markdown-preview-sizer {
