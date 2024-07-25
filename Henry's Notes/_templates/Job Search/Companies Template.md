@@ -16,6 +16,13 @@ work-connections:
 watch: false
 tags:
 ---
+# Overview
+- Name: `VIEW[{name}][text]`
+- Locations: `VIEW[{locations}][text]`
+- Description: `VIEW[{company-desc}][text]`
+- Size: `VIEW[{size-range}][text]`
+- Website: `VIEW[{website}][link]`
+- Careers Portal: `VIEW[{careers-portal}][link]`
 # Job Postings
 ```dataviewjs
 dv.table(
