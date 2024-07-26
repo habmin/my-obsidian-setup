@@ -18,17 +18,13 @@ const prevHref = dv.page(`Daily Notes/${moment(currentFileDate).subtract(1, 'day
 
 const nextHref = dv.page(`Daily Notes/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
 
-const homeHref = dv.page(`Daily Notes/${moment().format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
-
 const prevDisabled = prevHref === "#" ? "disabled" : '';
 const nextDisabled = nextHref === "#" ? "disabled" : '';
-const homeDisabled = homeHref === "#" ? "disabled" : '';
 
 function removeChild(element) {
 	element.removeChild(element.firstChild);
 }
 
-// Create the nav-bar container
 const navBar = dv.el('div', '', {cls: 'nav-bar'});
 removeChild(navBar);
   
@@ -47,19 +43,6 @@ prevLink.innerHTML = prevLinkChildren;
 
 prevButton.appendChild(prevLink);
 
-// Create Home nav-button
-const homeButton = dv.el('div', '', {cls: `nav-button home ${homeDisabled}`});
-removeChild(homeButton);
-
-const homeLink = dv.el('a', '', {cls: 'internal-link', href: homeHref});
-removeChild(homeLink);
-
-const homeLinkChildren = `<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-calendar-check"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>`
-
-homeLink.innerHTML = homeLinkChildren;
-
-homeButton.appendChild(homeLink)
-
 // Create the next nav-button
 let nextButton = dv.el('div', '', {cls: `nav-button next ${nextDisabled}`});
 removeChild(nextButton);
@@ -75,7 +58,6 @@ nextButton.appendChild(nextLink);
   
 // Append both nav-buttons to the nav-bar
 navBar.appendChild(prevButton);
-navBar.appendChild(homeButton);
 navBar.appendChild(nextButton);
 
 // Append the nav-bar to the Dataview container
@@ -100,8 +82,8 @@ dv.el("div", dv.el("div","", {cls:"left-pb", attr: {style: `width: ${completedFi
 ## :LiMoon: Evening
 <% tp.file.include("[[Evening Template]]") %>
 # :LiBookOpenText: Notes
-## :LiMessageCircle: General
-## :LiBrain: Reflections
+## :LiMessageCircle: Freewrite
+## :LiBrain: Log
 ### *How was your day?*
 ### *What was your highlight?*
 ### *What could have gone better?*
