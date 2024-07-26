@@ -2,12 +2,12 @@
     --metadata-display-editing: none
 }
 
-.daily-note .image-embed img:first-of-type {
+/* .daily-note .image-embed img:first-of-type {
     width: 100%;
     height: 100px;
     object-fit: cover;
     object-position: center;
-}
+} */
 
 .workspace-leaf-content[data-mode="preview"] .view-content .daily-note .inline-title {
     display: none;
@@ -16,8 +16,12 @@
 .daily-note .callout[data-callout="bannericonc"] .callout-content>p {
     font-family: 'Josefin Sans', 'Inter';
     font-weight: 700;
-    text-shadow: 0px 1px 7px black;
+    text-shadow: 
+        0px 4px 9px black,
+        0px 1px 3px black;
     color: white;
+    z-index: 1;
+    top: -0.37em;
 }
 
 .daily-note h1, .daily-note .cm-header-1, 
@@ -26,12 +30,14 @@
     width: fit-content;
     position: relative;
     font-family: 'Bellota Text', 'Inter', sans-serif;
-    /* background: linear-gradient(#0df237, #ffffff);
+
+    /* background: radial-gradient(circle at top right,#ffffff, #5b7734);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-     */
-    /* letter-spacing: 0.07em;
-    font-weight: 600; */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    
+    letter-spacing: 0.04em;
+
 }
 
 .daily-note .heading-collapse-indicator {

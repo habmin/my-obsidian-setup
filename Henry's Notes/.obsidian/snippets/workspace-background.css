@@ -11,15 +11,21 @@ https://i.imgur.com/egHWdmn.jpeg
 https://i.imgur.com/8qT1VWl.jpeg
 */
 
+
 .theme-dark .workspace{
-    backdrop-filter: saturate(1.8) brightness(0.22) blur(20px);
+    backdrop-filter: hue-rotate(320deg) saturate(.3) brightness(.3) blur(12px);
     background-color: transparent;
 }
 .horizontal-main-container {
-    background-image: url("https://i.imgur.com/8qT1VWl.jpeg");
+    background-image: url("https://i.imgur.com/egHWdmn.jpeg");
     background-size: cover;
 }
 
+.is-mobile {
+    background-image: initial;
+    background-color: initial;
+    backdrop-filter: initial;
+}
 body:not(.is-mobile) {
     --background-primary: transparent;
     --background-secondary: transparent;
