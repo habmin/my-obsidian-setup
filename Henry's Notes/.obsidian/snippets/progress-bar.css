@@ -3,7 +3,7 @@
     border-radius: 10px;
     width: 100%;
     height: 2.3rem;
-    background: linear-gradient(rgba(40, 40, 40, 0.85), rgba(30, 30, 30, 0.85) 140%);
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%);
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin: 0.7rem 0.0rem 0.7rem 0.0rem;
@@ -13,7 +13,7 @@
 .is-mobile .progress-bar {
     transition: box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10) 140%);
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%)
 }
 
 .progress-bar:hover {

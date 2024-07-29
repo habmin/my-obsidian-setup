@@ -1,0 +1,1 @@
+`$= "![[" + moment().format('YYYY-MM-DD-ddd') + " - Daily Notes#:LiSun: Morning]]"`

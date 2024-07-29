@@ -50,7 +50,7 @@ input[type="checkbox"] {
   
   input[type="checkbox"]:not(:checked):hover {
     border: 1px solid var(--text-accent);
-    border-radius: var(--checkbox-radius);
+    /* border-radius: var(--checkbox-radius); */
     -webkit-appearance: none;
     appearance: none;
   }

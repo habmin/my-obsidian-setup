@@ -1,0 +1,14 @@
+a:not(.tag, .raindrop-tag, .clickable-icon, :has(img:not(.link-favicon))):hover, .cm-s-obsidian .cm-line:not(.cm-active) span.cm-hmd-internal-link:hover, .external-link:not(:has(img:not(.link-favicon))):hover, .cm-s-obsidian .cm-line:not(.cm-active) span:is(.cm-link, .cm-url):hover {
+    border-radius: initial;
+    background-color: initial;
+    transition: initial;
+}
+
+.HyperMD-codeblock {
+    background-image: none !important;
+}
+
+.is-popout-window:not(.is-mobile) .app-container{
+    background-color: var(--background-primary);
+    background-image: var(--background-underlying-CSS-dark);
+}

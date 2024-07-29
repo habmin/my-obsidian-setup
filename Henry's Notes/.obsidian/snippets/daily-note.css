@@ -75,14 +75,14 @@
 }
 
 .daily-note .contains-task-list{
-    background: linear-gradient(rgba(40, 40, 40, 0.85), rgba(30, 30, 30, 0.85) 140%);
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%);
     border-radius: 10px;
     padding: 0.5rem 2rem 0.5rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .is-mobile .daily-note .contains-task-list{
-    background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10) 140%);
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%)
 }
 
 .daily-note .contains-task-list .contains-task-list {
