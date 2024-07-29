@@ -21,7 +21,7 @@
         0px 1px 3px black;
     color: white;
     z-index: 1;
-    top: -0.37em;
+    /* top: -0.30em; */
 }
 
 .daily-note h1, .daily-note .cm-header-1, 
