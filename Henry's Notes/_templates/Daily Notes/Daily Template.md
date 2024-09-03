@@ -14,9 +14,18 @@ const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_
 ```dataviewjs
 const currentFileDate = await dv.current().file.name.slice(0, 10);
 
-const prevHref = dv.page(`Daily Notes/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+let prevHref = dv.page(`Daily Notes/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
 
-const nextHref = dv.page(`Daily Notes/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+// Check to see if the notes moved to the Archive folder
+if (prevHref === "#") {
+	prevHref = dv.page(`Daily Notes/Archive/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+}
+
+let nextHref = dv.page(`Daily Notes/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+
+if (nextHref === "#") {
+	nextHref = dv.page(`Daily Notes/Archive/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+}
 
 const prevDisabled = prevHref === "#" ? "disabled" : '';
 const nextDisabled = nextHref === "#" ? "disabled" : '';
@@ -82,6 +91,7 @@ dv.el("div", dv.el("div","", {cls:"left-pb", attr: {style: `width: ${completedFi
 ## :LiMoon: Evening
 <% tp.file.include("[[Evening Template]]") %>
 # :LiBookOpenText: Notes
+## :LiListPlus: New Items
 ## :LiMessageCircle: Freewrite
 ## :LiBrain: Log
 ### *How was your day?*

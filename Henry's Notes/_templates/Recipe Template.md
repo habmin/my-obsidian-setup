@@ -24,6 +24,7 @@ cssclasses:
 - Cook Time: `VIEW[{cook-time-minutes}][text]` minutes
 - Total Time: `VIEW[{total-time-minutes}][text]` minutes
 - Avg. Time: `VIEW[{avg-time-minutes}][text]` minutes
+- Author: `VIEW[{recipe-author}][text]`
 - Source: `VIEW[{source}][link]`
 # Notes
 

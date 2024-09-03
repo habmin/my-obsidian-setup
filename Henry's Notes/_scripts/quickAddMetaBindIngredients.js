@@ -29,12 +29,16 @@ module.exports = async function recipeBanner(params) {
 
     // 4. Transform the ingredients to MetaBind format
     let transformedIngredients = input;
-    
+
     // transformations for Fraction Characters
     transformedIngredients = transformedIngredients.replace(/½/g, "1/2");
+    console.log(transformedIngredients);
     transformedIngredients = transformedIngredients.replace(/⅓/g, "1/3");
+    console.log(transformedIngredients);
     transformedIngredients = transformedIngredients.replace(/⅔/g, "2/3");
+    console.log(transformedIngredients);
     transformedIngredients = transformedIngredients.replace(/¼/g, "1/4");
+    console.log(transformedIngredients);
     transformedIngredients = transformedIngredients.replace(/¾/g, "3/4");
     transformedIngredients = transformedIngredients.replace(/⅕/g, "1/5");
     transformedIngredients = transformedIngredients.replace(/⅖/g, "2/5");
@@ -51,7 +55,7 @@ module.exports = async function recipeBanner(params) {
     transformedIngredients = transformedIngredients.replace(/⅒/g, "1/10");
 
     // replace numbers at the start of the line with the MetaBind math function
-    transformedIngredients = input.replace(/^(\s*)(\d*\.?\/?\d+)/gm, "\`VIEW[{metabind-servings} / {servings} * $2][math]\`")
+    transformedIngredients = input.replace(/^(\s*▢*\s*)(\d*\.?\/?\d+)/gm, "\`VIEW[{metabind-servings} / {servings} * $2][math]\`")
 
     // adding '- ' at the start of every line if there are any characters
     transformedIngredients = transformedIngredients.replace(/^(?=.*\S).+/gm, "- $&");

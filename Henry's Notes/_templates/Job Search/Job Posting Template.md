@@ -35,4 +35,6 @@ tags:
 
 # Timeline
 - Date Applied: `VIEW[{date-applied}][text]`
+- Stages: `$= dv.current().file.frontmatter['num-stages'] ?? "0"`
+- End Date: `VIEW[{end-date}][text]`
 - Result: `$= dv.current().file.frontmatter['result'] ?? 'Pending'`
