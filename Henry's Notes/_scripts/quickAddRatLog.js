@@ -1,9 +1,9 @@
-module.exports = async function recipeBanner(params) {
+module.exports = async function addRatLog(params) {
     const {
         app,
         quickAddApi: { inputPrompt },
     } = params;
-    
+
     // 1. Load Rat Log
     const ratLogFile = app.vault.getAbstractFileByPath("Personal/Rat Log.md");
     if (!ratLogFile) {
@@ -24,8 +24,6 @@ module.exports = async function recipeBanner(params) {
     const month = "## " + today.toLocaleString('default', { month: 'long' });
     const day = "### " + String(today.getDate()) + " - " + today.toLocaleDateString('default', { weekday: 'short' });
     const time = "**" + today.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true }) + ":** ";
-    console.log(today);
-    console.log(year, month, day, time);
 
     // 4. Check to see if the date already exists in the Rat Log and create headers
     const content = await this.app.vault.read(ratLogFile);
