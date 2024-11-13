@@ -1,13 +1,27 @@
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@latest"></script>
-
+// Used for creating labels for each day since beginning of Log
 const startDate = moment("2024-08-22"); // First entry date
 const endDate = moment(); // Current date
+
+// Event log for Line Graph
 const labels = [];
 const data = [];
-// const treatment = []
+
+// Capture treatment event
 let treatmentLines = {};
 let treatmentLineCounter = 0;
 let showLines = true;
+
+// Data for room instance for pie chart
+let roomData = {
+    "Guest Room/Office": 0,
+    "Living Room": 0,
+    "Hallway": 0,
+    "Kitchen": 0,
+    "Bathroom": 0,
+    "Bedroom": 0,
+    "Building/Other": 0
+}
+
 
 // Initialize labels and data arrays
 for (let date = startDate.clone(); date.isBefore(endDate); date.add(1, 'days')) {
@@ -24,13 +38,7 @@ function incrementDataPoint(dateStr) {
     }
 }
 
-// function incrementTreatmentPoint(dateStr) {
-//     const index = labels.indexOf(dateStr);
-//     if (index !== -1) {
-//         treatment[index]++;
-//     }
-// }
-
+// Create a chart.js annotation line from the treatment dates
 function createTreatmentLine(dateStr) {
     treatmentLines[`line${treatmentLineCounter}`] = {
         type: 'line',
@@ -64,50 +72,51 @@ function createTreatmentLine(dateStr) {
     treatmentLineCounter++;
 }
 
-const activeFile = this.app.vault.getAbstractFileByPath("Personal/Rat Log.md");
-const fileContent = await this.app.vault.read(activeFile);
+const logEvents = dv.page("Personal/Rat Log.md").file.lists;
 
-// Split the content into lines
-const lines = fileContent.split('\n');
+// Regexp to grab the date and Room in two different groups.
+const eventRegex = /\*\*(\d{4}-\d{2}-\d{2}) - \d{1,2}:\d{2} [APM]{2} - ([\w\s\/]+)\*\*/;
 
-let currentYear = null;
-let currentMonth = null;
-let currentDay = null;
+logEvents.forEach(line => {
+    const match = line.text.match(eventRegex);
 
-// Process each line in the file
-lines.forEach(line => {
-    const yearMatch = line.match(/^# (\d{4})/);
-    if (yearMatch) {
-        currentYear = yearMatch[1];
+    // Highlighted events mean an exterminator came for treatment
+    // make a treatment line but do not contribute it to other datas.
+    if (line.text.match(/^==/)) {
+        createTreatmentLine(match[1]);
         return;
     }
 
-    const monthMatch = line.match(/^## (\w{3})/);
-    if (monthMatch) {
-        currentMonth = monthMatch[1];
+    if (match && match[1] && match[2]) {
+        if ([match[2]] in roomData) {
+            roomData[match[2]]++;
+        } else {
+            console.log(`ERROR IN DATA: ${line}`);
+            return;
+        }
+        incrementDataPoint(match[1]);
+    } else {
+        console.log(`ERROR IN DATA: ${line}`);
         return;
     }
 
-    const dayMatch = line.match(/^### (\d{1,2})/);
-    if (dayMatch) {
-        currentDay = dayMatch[1];
-        return;
-    }
+    return;
+})
 
-    const treatmentMatch = line.match(/^- ==/);
-    if (treatmentMatch) {
-        const dateStr = moment(`${currentYear}-${currentMonth}-${currentDay}`, "YYYY-MMM-DD").format("YYYY-MM-DD");
-        // incrementTreatmentPoint(dateStr);
-        createTreatmentLine(dateStr);
-        return;
-    }
+// ******* Chart Rendering *******
 
-    if (currentYear && currentMonth && currentDay) {
-        const dateStr = moment(`${currentYear}-${currentMonth}-${currentDay}`, "YYYY-MMM-DD").format("YYYY-MM-DD");
-        incrementDataPoint(dateStr);
-        return;
-    }
-});
+// Custom/local plugin for different canvas backgrounds for graph
+const canvasBG = {
+  id: 'customCanvasBackgroundColor',
+  beforeDraw: (chart, args, options) => {
+    const {ctx} = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = options.color || '#99ffff';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  }
+};
 
 const chartData = {
     type: 'line',
@@ -142,8 +151,63 @@ const chartData = {
             annotation: {
                 annotations: treatmentLines,
             },
+            customCanvasBackgroundColor: {
+	            color: `rgba(
+		            ${dv.current().file.frontmatter.bgRed},
+		            ${dv.current().file.frontmatter.bgGreen},
+		            ${dv.current().file.frontmatter.bgBlue},
+		            ${dv.current().file.frontmatter.bgAlpha}
+	            )`
+            }
         },
-    }
+    },
+    plugins: [canvasBG]
 };
 
+const pieChart = {
+    type: 'doughnut',
+    data: {
+        labels: Object.keys(roomData),
+        datasets: [{
+            label: 'Room Data',
+            data: Object.values(roomData),
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                // Add more colors as needed
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                // Add more colors as needed
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: '# of Occurances per Room Pie Chart'
+            },
+            customCanvasBackgroundColor: {
+	            color: `rgba(
+		            ${dv.current().file.frontmatter.bgRed},
+		            ${dv.current().file.frontmatter.bgGreen},
+		            ${dv.current().file.frontmatter.bgBlue},
+		            ${dv.current().file.frontmatter.bgAlpha}
+	            )`
+            }
+        }
+    },
+    plugins: [canvasBG]
+}
+
 window.renderChart(chartData, this.container);
+window.renderChart(pieChart, this.container);

@@ -1,31 +1,6 @@
 ---
-input_text_area: |-2
-  
-
-      1 cup (240ml) homemade or instant dashi (see notes)
-
-      2 tablespoons (30ml) dry sake
-
-      1 tablespoon (15ml) soy sauce, plus more to taste
-
-      1 tablespoon (15g) sugar, plus more to taste
-
-      1 large onion (about 6 ounces; 170g), thinly sliced
-
-      12 ounces (340g) boneless, skinless chicken thighs or breast, thinly sliced
-
-      3 scallions, ends trimmed and thinly sliced, divided
-
-      2 stems mitsuba (optional; see note)
-
-      3 to 4 large eggs (see note)
-
-  To Serve:
-
-      2 cups cooked white rice
-
-      Togarashi (see note
-regex_expression: /^(\s*)(\d*\.?\/?\d+)/gm
+input_text_area: "- **12:14 AM:** Rats crawling around guest room radiator."
+regex_expression: "- **12:14 AM:** Rats crawling around guest room radiator."
 regex_group: $2
 regex_replace: "- \\`VIEW[{metabind-servings} / {servings} * $2][math]\\`"
 regex_combine: |-2
@@ -78,7 +53,7 @@ action:
   type: "updateMetadata"
   bindTarget: output_text_area
   evaluate: true
-  value: getMetadata('input_text_area').replace(/^(\s*)(\d*\.?\/?\d+)/gm, "- \`VIEW[{metabind-servings} / {servings} * $2][math]\`")
+  value: getMetadata('input_text_area').replace(getMetadata('regex_expression'), getMetadata('regex_replace'))
 ```
 ## Output
 `INPUT[textArea:output_text_area]`
