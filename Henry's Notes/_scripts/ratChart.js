@@ -1,3 +1,38 @@
+// Theme Colors
+const fontColorLight = 'rgba(0, 0, 0, 1)';
+const fontColorDark = 'rgba(229, 229, 229, 1)';
+const backgroundColorLight = 'rgba(238, 255, 230, 1)';
+const backgroundColorDark = 'rgba(20, 24, 33, 1)';
+
+// Line Graph
+const line1ColorLight = 'rgba(255, 99, 132, 1)';
+const line1ColorDark = 'rgba(255, 99, 132, 1)';
+const line2ColorLight = 'rgba(75, 192, 192, 1)';
+const line2ColorDark = 'rgba(75, 192, 192, 1)';
+const gridColorLight = "rgba(0, 0, 0, 0.1)";
+const gridColorDark = "rgba(229, 229, 229, 0.15)"
+
+// Pie Chart
+const pieChartColorsLight = [
+	'rgba(92, 171, 169, 1)',    // Teal
+	'rgba(164, 191, 127, 1)',   // Green
+	'rgba(232, 170, 120, 1)',   // Orange
+	'rgba(164, 139, 193, 1)',   // Light Purple
+	'rgba(98, 157, 221, 1)',    // Blue
+	'rgba(226, 145, 143, 1)',   // Salmon
+	'rgba(165, 215, 215, 1)',   // Light Blue
+];
+
+const pieChartColorsDark = [
+	'rgba(70, 130, 128, 1)',    // Teal
+	'rgba(89, 136, 39, 1)',     // Green
+	'rgba(219, 113, 32, 1)',    // Orange
+	'rgba(145, 89, 206, 1)',    // Purple
+	'rgba(71, 127, 224, 1)',    // Blue
+	'rgba(229, 80, 80, 1)',     // Salmon
+	'rgba(124, 43, 89, 1)',     // Magenta
+];
+
 // Used for creating labels for each day since beginning of Log
 const startDate = moment("2024-08-22"); // First entry date
 const endDate = moment(); // Current date
@@ -6,7 +41,7 @@ const endDate = moment(); // Current date
 const labels = [];
 const data = [];
 
-// Capture treatment event
+// Capture treatment event lines
 let treatmentLines = {};
 let treatmentLineCounter = 0;
 let showLines = true;
@@ -21,7 +56,6 @@ let roomData = {
     "Bedroom": 0,
     "Building/Other": 0
 }
-
 
 // Initialize labels and data arrays
 for (let date = startDate.clone(); date.isBefore(endDate); date.add(1, 'days')) {
@@ -51,7 +85,7 @@ function createTreatmentLine(dateStr) {
             position: "end",
             content: dateStr,
             enabled: showLines,
-            backgroundColor: 'rgba(75, 192, 192, 0.8)',
+            backgroundColor: dv.current().file.frontmatter.darkMode ? line2ColorDark : line2ColorLight,
             font: {
                 size: 12
             }
@@ -125,14 +159,14 @@ const chartData = {
         datasets: [{
             label: 'Rat Activity',
             data: data,
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
+            backgroundColor: dv.current().file.frontmatter.darkMode ? line1ColorDark : line1ColorLight,
+            borderColor: dv.current().file.frontmatter.darkMode ? line1ColorDark : line1ColorLight,
+            borderWidth: 1,
         },
         {
             label: 'Treatment Done',
-            backgroundColor: 'rgba(75, 192, 192, 0.8)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: dv.current().file.frontmatter.darkMode ? line2ColorDark : line2ColorLight,
+            borderColor: dv.current().file.frontmatter.darkMode ? line2ColorDark : line2ColorLight,
             borderWidth: 1,
             hidden: false
         }
@@ -144,20 +178,34 @@ const chartData = {
                 time: {
                     unit: 'day',
                     tooltipFormat: 'YYYY-MM-DD'
+                },
+                ticks: {
+                    color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
+                },
+                grid: {
+                    color: dv.current().file.frontmatter.darkMode ? gridColorDark : gridColorLight
+                }
+            },
+            y: {
+                ticks: {
+                    color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
+                },
+                grid: {
+                    color: dv.current().file.frontmatter.darkMode ? gridColorDark : gridColorLight
                 }
             }
         },
         plugins: {
+            legend: {
+                labels: {
+                    color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
+                }
+            },
             annotation: {
                 annotations: treatmentLines,
             },
             customCanvasBackgroundColor: {
-	            color: `rgba(
-		            ${dv.current().file.frontmatter.bgRed},
-		            ${dv.current().file.frontmatter.bgGreen},
-		            ${dv.current().file.frontmatter.bgBlue},
-		            ${dv.current().file.frontmatter.bgAlpha}
-	            )`
+	            color: dv.current().file.frontmatter.darkMode ? backgroundColorDark : backgroundColorLight
             }
         },
     },
@@ -171,18 +219,8 @@ const pieChart = {
         datasets: [{
             label: 'Room Data',
             data: Object.values(roomData),
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                // Add more colors as needed
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                // Add more colors as needed
-            ],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark : pieChartColorsLight,
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark : pieChartColorsLight,
             borderWidth: 1
         }]
     },
@@ -190,19 +228,18 @@ const pieChart = {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top',
+                position: 'right',
+                labels: {
+                    color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
+                }
             },
             title: {
                 display: true,
-                text: '# of Occurances per Room Pie Chart'
+                text: '# of Occurences per Room Pie Chart',
+                color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
             },
             customCanvasBackgroundColor: {
-	            color: `rgba(
-		            ${dv.current().file.frontmatter.bgRed},
-		            ${dv.current().file.frontmatter.bgGreen},
-		            ${dv.current().file.frontmatter.bgBlue},
-		            ${dv.current().file.frontmatter.bgAlpha}
-	            )`
+	            color: dv.current().file.frontmatter.darkMode ? backgroundColorDark : backgroundColorLight
             }
         }
     },
