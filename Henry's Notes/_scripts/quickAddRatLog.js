@@ -16,7 +16,7 @@ module.exports = async function addRatLog(params) {
     ]
 
     // Load Rat Log
-    const ratLogFile = app.vault.getAbstractFileByPath("Personal/Rat Log.md");
+    const ratLogFile = app.vault.getAbstractFileByPath("Personal/Tenant Union/Rat Log.md");
     if (!ratLogFile) {
       new Notice("Rat Log file not found.");
       return;
