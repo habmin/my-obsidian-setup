@@ -64,11 +64,23 @@ for (let date = startDate.clone(); date.isBefore(endDate); date.add(1, 'days')) 
     // treatment.push(0)
 }
 
+// Line graph data for each room
+const roomGraphData = {
+    "Guest Room/Office": [...data],
+	"Living Room":       [...data],
+    "Hallway":           [...data],
+    "Kitchen":           [...data],
+    "Bathroom":          [...data],
+    "Bedroom":           [...data],
+    "Building/Other":    [...data]
+}
+
 // Function to increment data points for each entry
-function incrementDataPoint(dateStr) {
+function incrementDataPoint(dateStr, roomStr) {
     const index = labels.indexOf(dateStr);
     if (index !== -1) {
         data[index]++;
+        roomGraphData[roomStr][index]++;
     }
 }
 
@@ -106,7 +118,7 @@ function createTreatmentLine(dateStr) {
     treatmentLineCounter++;
 }
 
-const logEvents = dv.page("Personal/Rat Log.md").file.lists;
+const logEvents = dv.page("Personal/Tenant Union/Rat Log.md").file.lists;
 
 // Regexp to grab the date and Room in two different groups.
 const eventRegex = /\*\*(\d{4}-\d{2}-\d{2}) - \d{1,2}:\d{2} [APM]{2} - ([\w\s\/]+)\*\*/;
@@ -128,7 +140,7 @@ logEvents.forEach(line => {
             console.log(`ERROR IN DATA: ${line}`);
             return;
         }
-        incrementDataPoint(match[1]);
+        incrementDataPoint(match[1], match[2]);
     } else {
         console.log(`ERROR IN DATA: ${line}`);
         return;
@@ -161,6 +173,55 @@ const chartData = {
             data: data,
             backgroundColor: dv.current().file.frontmatter.darkMode ? line1ColorDark : line1ColorLight,
             borderColor: dv.current().file.frontmatter.darkMode ? line1ColorDark : line1ColorLight,
+            borderWidth: 1,
+        },
+        {
+            label: 'Guest Room/Office',
+            data: roomGraphData['Guest Room/Office'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[0] : pieChartColorsLight[0],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[0] : pieChartColorsLight[0],
+            borderWidth: 1,
+        },
+        {
+            label: 'Living Room',
+            data: roomGraphData['Living Room'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[1] : pieChartColorsLight[1],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[1] : pieChartColorsLight[1],
+            borderWidth: 1,
+        },
+        {
+            label: 'Hallway',
+            data: roomGraphData['Hallway'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[2] : pieChartColorsLight[2],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[2] : pieChartColorsLight[2],
+            borderWidth: 1,
+        },
+        {
+            label: 'Kitchen',
+            data: roomGraphData['Kitchen'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[3] : pieChartColorsLight[3],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[3] : pieChartColorsLight[3],
+            borderWidth: 1,
+        },
+        {
+            label: 'Bathroom',
+            data: roomGraphData['Bathroom'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[4] : pieChartColorsLight[4],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[4] : pieChartColorsLight[4],
+            borderWidth: 1,
+        },
+        {
+            label: 'Bedroom',
+            data: roomGraphData['Bedroom'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[5] : pieChartColorsLight[5],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[5] : pieChartColorsLight[5],
+            borderWidth: 1,
+        },
+        {
+            label: 'Building/Other',
+            data: roomGraphData['Building/Other'],
+            backgroundColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[6] : pieChartColorsLight[6],
+            borderColor: dv.current().file.frontmatter.darkMode ? pieChartColorsDark[6] : pieChartColorsLight[6],
             borderWidth: 1,
         },
         {
