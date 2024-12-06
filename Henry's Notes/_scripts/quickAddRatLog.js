@@ -50,24 +50,29 @@ module.exports = async function addRatLog(params) {
 
     const day = today.toLocaleString('default', { day: '2-digit' });
     const dayHeader = "### " + String(today.getDate()) + " - " + today.toLocaleDateString('default', { weekday: 'short' });
-    
+
     const time = today.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true });
 
     // Check to see if the date already exists in the Rat Log and create headers
     const content = await this.app.vault.read(ratLogFile);
+
+    const listHeader = "- **" + year + "-" + month + "-" + day + " - " + time + " - ";
+
     let preHeaders = "";
+    //check for year
     if (!content.includes(yearHeader)) {
         preHeaders += yearHeader + "\n";
     }
-    if (!(content.includes(monthHeader) && content.includes(yearHeader))) {
+    //check for month
+    if (!content.contains(listHeader.slice(0, 11))) {
         preHeaders += monthHeader + "\n";
     }
-    if (!(content.includes(dayHeader) && content.includes(monthHeader) && content.includes(yearHeader))) {
+    if (!content.contains(listHeader.slice(0, 14))) {
         preHeaders += dayHeader + "\n";
     }
 
     // Create list item header for log event
-    const eventList = "- **" + year + "-" + month + "-" + day + " - " + time + " - " + roomSelection + "**: " + input;
+    const eventList = listHeader + roomSelection + "**: " + input;
 
     // Append to Rat Log content
     const newContent = content + '\n' + preHeaders + eventList;
