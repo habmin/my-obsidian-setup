@@ -9,6 +9,10 @@
     object-position: center;
 } */
 
+/* .cm-editor {
+    background-color: aqua;
+} */
+
 .workspace-leaf-content[data-mode="preview"] .view-content .daily-note .inline-title {
     display: none;
 }
@@ -31,7 +35,7 @@
     position: relative;
     font-family: 'Bellota Text', 'Inter', sans-serif;
 
-    /* background: radial-gradient(circle at top right,#ffffff, #5b7734);
+    /* background: radial-gradient(circle at top right,#abd635, #30b31f);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent; */
@@ -39,6 +43,10 @@
     letter-spacing: 0.04em;
 
 }
+
+/* .cm-iconize-icon > svg, .lucide-chevrons-left, .lucide-chevrons-right {
+    stroke: #30b31f;
+} */
 
 .daily-note .heading-collapse-indicator {
     width: 100%;
