@@ -34,8 +34,8 @@ const pieChartColorsDark = [
 ];
 
 // Used for creating labels for each day since beginning of Log
-const startDate = moment("2024-08-22"); // First entry date
-const endDate = moment(); // Current date
+const startDate = moment(dv.current().file.frontmatter.dateStart); // First entry date
+const endDate = moment(dv.current().file.frontmatter.dateEnd).add(1, 'days'); // Current date
 
 // Event log for Line Graph
 const labels = [];
@@ -63,6 +63,8 @@ for (let date = startDate.clone(); date.isBefore(endDate); date.add(1, 'days')) 
     data.push(0); // Initialize data points to 0
     // treatment.push(0)
 }
+
+console.log(labels)
 
 // Line graph data for each room
 const roomGraphData = {
@@ -125,6 +127,8 @@ const eventRegex = /\*\*(\d{4}-\d{2}-\d{2}) - \d{1,2}:\d{2} [APM]{2} - ([\w\s\/]
 
 logEvents.forEach(line => {
     const match = line.text.match(eventRegex);
+
+	if (moment(match[1]).isBefore(startDate) || moment(match[1]).isAfter(endDate)) return;
 
     // Highlighted events mean an exterminator came for treatment
     // make a treatment line but do not contribute it to other datas.
