@@ -44,7 +44,6 @@ const data = [];
 // Capture treatment event lines
 let treatmentLines = {};
 let treatmentLineCounter = 0;
-let showLines = true;
 
 // Data for room instance for pie chart
 let roomData = {
@@ -63,8 +62,6 @@ for (let date = startDate.clone(); date.isBefore(endDate); date.add(1, 'days')) 
     data.push(0); // Initialize data points to 0
     // treatment.push(0)
 }
-
-console.log(labels)
 
 // Line graph data for each room
 const roomGraphData = {
@@ -94,20 +91,17 @@ function createTreatmentLine(dateStr) {
         xMax: dateStr,
         borderColor: 'rgba(75, 192, 192, 0.7)',
         borderWidth: 5,
+        display: true,
         label: {
             display: (ctx) => ctx.hovered,
             position: "end",
             content: dateStr,
-            enabled: showLines,
+            enabled: true,
             backgroundColor: dv.current().file.frontmatter.darkMode ? line2ColorDark : line2ColorLight,
             font: {
                 size: 12
             }
         },
-        // hover: {
-        //     mode: 'near',
-        //     intersect: true
-        // },
         enter(ctx, event) {
             ctx.hovered = true;
             ctx.chart.update();
@@ -152,6 +146,54 @@ logEvents.forEach(line => {
 
     return;
 })
+
+function handleHoverLabelLineGraph(event, item, legend) {
+	if (!item.hidden) {
+		const regex = /1\)$/;
+		legend.chart.data.datasets.forEach((line) => {
+			if (item.text !== line.label) {
+				line.backgroundColor = line.backgroundColor.replace(regex, '0.15)');
+				line.borderColor = line.borderColor.replace(regex, '0.15)');
+			}
+			else {
+				line.borderWidth = 3;
+			}
+		});
+		legend.chart.update();
+	}
+}
+
+function handleLeaveLabelLineGraph(event, item, legend) {
+	const regex = /0.15\)$/;
+	legend.chart.data.datasets.forEach((line) => {
+		if (item.text !== line.label) {
+			line.backgroundColor = line.backgroundColor.replace(regex, '1)');
+			line.borderColor = line.borderColor.replace(regex, '1)');
+		}
+		else {
+			line.borderWidth = 1;
+		}
+	});
+	legend.chart.update();
+}
+
+function handleClickLabelLineGraph(event, item, legend) {
+    // default behavior
+    let i = legend.chart.data.datasets.findIndex((dataset) => {
+        return dataset.label === item.text;
+    });
+    let s = event.chart;
+    event.chart.isDatasetVisible(i) ? (event.chart.hide(i), item.hidden = !0) : (event.chart.show(i), item.hidden = !1);
+
+    // treatment lines only
+    if (i == 8) {
+        const lines = Object.values(legend.chart.config.options.plugins.annotation.annotations)
+        lines.forEach((line) => {
+            line.display = !line.display;
+        });
+	    legend.chart.update();
+    }
+}
 
 // ******* Chart Rendering *******
 
@@ -264,7 +306,10 @@ const chartData = {
             legend: {
                 labels: {
                     color: dv.current().file.frontmatter.darkMode ? fontColorDark : fontColorLight
-                }
+                },
+                onHover: handleHoverLabelLineGraph,
+                onLeave: handleLeaveLabelLineGraph,
+                onClick: handleClickLabelLineGraph,
             },
             annotation: {
                 annotations: treatmentLines,
