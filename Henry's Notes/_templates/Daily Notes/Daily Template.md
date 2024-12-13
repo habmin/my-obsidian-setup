@@ -80,7 +80,7 @@ const file = await this.app.workspace.getActiveFile();
 
 const progressBar = await container.createEl('div', {cls: "progress-bar"});
 const completedBar = await progressBar.createEl('div', {cls: "left-pb", attr: {style: "width: 0%"}});
-const stats = await container.createEl('h6', {cls: "stats"});
+const stats = await container.createEl('h6', {cls: "stats", text: "0/0"});
 
 const leftPB = await component.containerEl.children[0].children[0];
 const statsEl = await component.containerEl.children[1];
@@ -127,8 +127,7 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 {energyLevel} as energyLevel
 ---
 const mb = await app.plugins.getPlugin('obsidian-meta-bind-plugin')?.api;
-const dv = await app.plugins.getPlugin('dataview')?.api;
-console.log(dv)
+
 const declaration = `\n\n\`INPUT[inlineSelect(option(Dead), option(Just Tired), option(Pushing Through), option(Grooving), option(I Feel GREAT!)):energyLevel]\``;
 
 const batteryNone = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>`;
