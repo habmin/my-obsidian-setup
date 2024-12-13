@@ -32,3 +32,8 @@
     width:5%;
     background: radial-gradient(49% 81% at 45% 47%, #77D926 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #AFD926FF 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #40C652FF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #26D953FF 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #26D9ABFF 0%, #B2D926FF 100%);
 }
+
+.stats {
+    margin: 0px !important;
+    text-align: right;
+}

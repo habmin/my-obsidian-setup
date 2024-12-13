@@ -73,14 +73,16 @@ navBar.appendChild(nextButton);
 // Append the nav-bar to the Dataview container
 dv.container.appendChild(navBar);
 ```
-# :LiListTodo: Tasks (`$=dv.current().file.tasks.where(t => t.completed).length`/`$=dv.current().file.tasks.length`)
+# :LiListTodo: Tasks 
 ```js-engine
 const file = await this.app.workspace.getActiveFile();
 
 const progressBar = await container.createEl('div', {cls: "progress-bar"});
 const completedBar = await progressBar.createEl('div', {cls: "left-pb", attr: {style: "width: 0%"}});
+const stats = await container.createEl('h6', {cls: "stats"});
 
 const leftPB = await component.containerEl.children[0].children[0];
+const statsEl = await component.containerEl.children[1];
 
 // Clean up event listener when the script is unloaded
 async function updateProgressBar() {
@@ -92,6 +94,7 @@ async function updateProgressBar() {
 		const completed = listItems.filter((listItem) => 'task' in listItem && listItem['task'] === 'x').length;
 		const completedFill = Math.floor(completed * (100 / totalTasks));
 		leftPB.setAttribute("style", `width: ${completedFill}%`);
+		statsEl.innerText = `${completed}/${totalTasks}`;
 	} catch (error) {
 		console.error('Error updating progress bar: ', error);
 	}
@@ -99,12 +102,12 @@ async function updateProgressBar() {
 
 updateProgressBar();
 
-function updateHandler() {
+function updateProgressBarHandler() {
 	if (file.path === this.app.workspace.getActiveFile().path)
 		updateProgressBar();
 };
 
-component.registerEvent(this.app.metadataCache.on('changed', updateHandler));
+component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHandler));
 ```
 ## :LiSun: Morning
 <% tp.file.include("[[Morning Template]]") %>
@@ -116,7 +119,7 @@ component.registerEvent(this.app.metadataCache.on('changed', updateHandler));
 <% tp.file.include("[[Personal Template]]") %>
 ## :LiMoon: Evening
 <% tp.file.include("[[Evening Template]]") %>
-# :LiGoal: Personal Stand Up
+# :LiUserPen: Personal Stand Up
 ## :LiZap: Energy Level
 *How are you feeling?*
 ```meta-bind-js-view
