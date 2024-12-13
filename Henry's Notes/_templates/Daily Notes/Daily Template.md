@@ -13,19 +13,20 @@ const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_
 > [!bannericonc]
 > <% moment(fileDate).format('MMM D YY') %>
 ```dataviewjs
-const currentFileDate = await dv.current().file.name.slice(0, 10);
+//const currentFileDate = await dv.current().file.name.slice(0, 10);
+const currentFileDate = await this.app.workspace.getActiveFile().name.slice(0, 10);
 
-let prevHref = dv.page(`Daily Notes/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+let prevHref = await this.app.vault.getAbstractFileByPath(`Daily Notes/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.path ?? "#";
 
 // Check to see if the notes moved to the Archive folder
 if (prevHref === "#") {
-	prevHref = dv.page(`Daily Notes/Archive/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+	prevHref = await this.app.vault.getAbstractFileByPath(`Daily Notes/Archive/${moment(currentFileDate).subtract(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.path ?? "#";
 }
 
-let nextHref = dv.page(`Daily Notes/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+let nextHref = await this.app.vault.getAbstractFileByPath(`Daily Notes/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.path ?? "#";
 
 if (nextHref === "#") {
-	nextHref = dv.page(`Daily Notes/Archive/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.file.path ?? "#";
+	nextHref = await this.app.vault.getAbstractFileByPath(`Daily Notes/Archive/${moment(currentFileDate).add(1, 'days').format('YYYY-MM-DD-ddd')} - Daily Notes.md`)?.path ?? "#";
 }
 
 const prevDisabled = prevHref === "#" ? "disabled" : '';
