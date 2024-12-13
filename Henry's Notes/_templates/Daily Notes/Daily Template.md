@@ -2,6 +2,7 @@
 cssclasses:
   - daily-note
   - bannerimg
+energyLevel: Pushing Through
 ---
 <%*
 const fileDate = tp.file.title.slice(0, 10);
@@ -73,12 +74,37 @@ navBar.appendChild(nextButton);
 dv.container.appendChild(navBar);
 ```
 # :LiListTodo: Tasks (`$=dv.current().file.tasks.where(t => t.completed).length`/`$=dv.current().file.tasks.length`)
-```dataviewjs
-const completed = dv.current().file.tasks.where(t => t.completed).length;
-const totalTasks = dv.current().file.tasks.length;
-const completedFill = Math.floor(completed * (100 / totalTasks));
+```js-engine
+const file = await this.app.workspace.getActiveFile();
 
-dv.el("div", dv.el("div","", {cls:"left-pb", attr: {style: `width: ${completedFill}%`}}), {cls: "progress-bar"}); 
+const progressBar = await container.createEl('div', {cls: "progress-bar"});
+const completedBar = await progressBar.createEl('div', {cls: "left-pb", attr: {style: "width: 0%"}});
+
+const leftPB = await component.containerEl.children[0].children[0];
+
+// Clean up event listener when the script is unloaded
+async function updateProgressBar() {
+	try {
+		await new Promise(resolve => setTimeout(resolve, 100));
+		const metadata = await app.metadataCache.getFileCache(file);
+		const listItems = metadata.listItems || [];
+		const totalTasks = listItems.filter((listItem) => 'task' in listItem).length;
+		const completed = listItems.filter((listItem) => 'task' in listItem && listItem['task'] === 'x').length;
+		const completedFill = Math.floor(completed * (100 / totalTasks));
+		leftPB.setAttribute("style", `width: ${completedFill}%`);
+	} catch (error) {
+		console.error('Error updating progress bar: ', error);
+	}
+}
+
+updateProgressBar();
+
+function updateHandler() {
+	if (file.path === this.app.workspace.getActiveFile().path)
+		updateProgressBar();
+};
+
+component.registerEvent(this.app.metadataCache.on('changed', updateHandler));
 ```
 ## :LiSun: Morning
 <% tp.file.include("[[Morning Template]]") %>
@@ -90,10 +116,62 @@ dv.el("div", dv.el("div","", {cls:"left-pb", attr: {style: `width: ${completedFi
 <% tp.file.include("[[Personal Template]]") %>
 ## :LiMoon: Evening
 <% tp.file.include("[[Evening Template]]") %>
+# :LiGoal: Personal Stand Up
+## :LiZap: Energy Level
+*How are you feeling?*
+```meta-bind-js-view
+{energyLevel} as energyLevel
+---
+const mb = await app.plugins.getPlugin('obsidian-meta-bind-plugin')?.api;
+const dv = await app.plugins.getPlugin('dataview')?.api;
+console.log(dv)
+const declaration = `\n\n\`INPUT[inlineSelect(option(Dead), option(Just Tired), option(Pushing Through), option(Grooving), option(I Feel GREAT!)):energyLevel]\``;
+
+const batteryNone = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>`;
+
+const batteryLow = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery-low"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><line x1="6" y1="11" x2="6" y2="13"></line></svg>`;
+
+const batteryMid = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery-medium"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><line x1="6" y1="11" x2="6" y2="13"></line><line x1="10" y1="11" x2="10" y2="13"></line></svg>`;
+
+const batteryFull = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery-full"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><line x1="6" y1="11" x2="6" y2="13"></line><line x1="10" y1="11" x2="10" y2="13"></line><line x1="14" y1="11" x2="14" y2="13"></line></svg>`;
+
+const batteryCharge = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery-charging"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"></path><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"></path><path d="m11 7-3 5h4l-3 5"></path><line x1="22" y1="11" x2="22" y2="13"></line></svg>`;
+
+const batteryMap = {
+	"Dead": batteryNone,
+	"Just Tired": batteryLow,
+	"Pushing Through": batteryMid,
+	"Grooving": batteryFull,
+	"I Feel GREAT!": batteryCharge
+};
+
+const energyIconDiv = container.createEl('div', {cls: "energy-icon-div"});
+
+energyIconDiv.innerHTML = batteryMap[context.bound.energyLevel];
+
+const blankDiv = container.createEl('div');
+
+const selectOptions = {
+	declaration: "INPUT[inlineSelect(option(Dead), option(Just Tired), option(Pushing Through), option(Grooving), option(I Feel GREAT!)):energyLevel]",
+	renderChildType: "inline"
+};
+
+const mountable = mb.createInputFieldMountable(context.file.path, selectOptions);
+
+await mb.wrapInMDRC(mountable, blankDiv, component);
+
+energyIconDiv.append(blankDiv);
+```
+- 
+## :LiRewind: Recap
+*What did you do yesterday?*
+- 
+## :LiGoal: Goals
+*What do you plan to do today?*
+- 
+## :LiHandshake: Thanks
+*Anyone or anything you want to give kudos to?*
+- 
 # :LiBookOpenText: Notes
 ## :LiListPlus: New Items
 ## :LiMessageCircle: Freewrite
-## :LiBrain: Log
-### *How was your day?*
-### *What was your highlight?*
-### *What could have gone better?*

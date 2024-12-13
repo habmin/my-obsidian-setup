@@ -177,6 +177,61 @@
     stroke: var(--text-faint);
 }
 
+.daily-note .cm-iconize-icon[data-icon="LiBattery"],
+.daily-note .cm-iconize-icon[data-icon="LiBatteryLow"],
+.daily-note .cm-iconize-icon[data-icon="LiBatteryMedium"],
+.daily-note .cm-iconize-icon[data-icon="LiBatteryFull"],
+.daily-note .cm-iconize-icon[data-icon="LiBatteryCharging"]{
+    transform: translateY(1rem) !important;
+}
+
+.daily-note .cm-iconize-icon[data-icon="LiBattery"] svg,
+.daily-note .cm-iconize-icon[data-icon="LiBatteryLow"] svg,
+.daily-note .cm-iconize-icon[data-icon="LiBatteryMedium"] svg,
+.daily-note .cm-iconize-icon[data-icon="LiBatteryFull"] svg,
+.daily-note .cm-iconize-icon[data-icon="LiBatteryCharging"] svg {
+    width: 2.7rem;
+    height: 2.7rem;
+}
+
+.energy-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+    margin: 0 0.5rem 0 0.2rem;
+}
+
+.energy-icon-div {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Not used in the daily note template but stored in case slider is needed */
+.daily-note .energy-slider{
+    width: 100%;
+    padding-left: 0.4rem;
+    padding-right: 1.1rem;
+}
+
+.is-mobile .daily-note .energy-slider{
+    width: 100%;
+    padding-left: 0.2rem;
+    padding-right: 1.0rem;
+}
+
+.daily-note .energy-slider .slider {
+    width: 100%;
+    margin: 0 !important;
+}
+
+.daily-note .energy-slider-icon-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
 /* .workspace-leaf-content[data-mode="preview"] .nav-bar {
     top: -20px;
 } */
