@@ -128,8 +128,6 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 ---
 const mb = await app.plugins.getPlugin('obsidian-meta-bind-plugin')?.api;
 
-const declaration = `\n\n\`INPUT[inlineSelect(option(Dead), option(Just Tired), option(Pushing Through), option(Grooving), option(I Feel GREAT!)):energyLevel]\``;
-
 const batteryNone = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>`;
 
 const batteryLow = `<svg class="energy-icon" xmlns="http://www.w3.org/2000/svg" width="2.7rem" height="2.7rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-battery-low"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><line x1="6" y1="11" x2="6" y2="13"></line></svg>`;
@@ -171,6 +169,9 @@ energyIconDiv.append(blankDiv);
 - 
 ## :LiGoal: Goals
 *What do you plan to do today?*
+- 
+## :LiConstruction: Blockers
+*Any blockers that you came across or anticipate?*
 - 
 ## :LiHandshake: Thanks
 *Anyone or anything you want to give kudos to?*
