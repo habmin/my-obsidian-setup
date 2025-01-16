@@ -1,15 +1,16 @@
 ---
 cssclasses:
   - daily-note
+  - task-progress-bar
   - bannerimg
 energyLevel: Pushing Through
 ---
 <%*
 const fileDate = tp.file.title.slice(0, 10);
-const dayOfYear = moment(fileDate).dayOfYear();
+const daysEpoch = Math.floor(moment(fileDate).unix() / 86400);
 const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_notes').children.length;
 -%>
-![[<% (dayOfYear % numOfFiles).toString().padStart(3, '0') %>.jpg##bannerimgfade]]
+![[<% (daysEpoch % numOfFiles).toString().padStart(3, '0') %>.jpg##bannerimgfade]]
 > [!bannericonc]
 > <% moment(fileDate).format('MMM D YY') %>
 ```dataviewjs
@@ -80,10 +81,14 @@ const file = await this.app.workspace.getActiveFile();
 
 const progressBar = await container.createEl('div', {cls: "progress-bar"});
 const completedBar = await progressBar.createEl('div', {cls: "left-pb", attr: {style: "width: 0%"}});
-const stats = await container.createEl('h6', {cls: "stats", text: "0/0"});
 
-const leftPB = await component.containerEl.children[0].children[0];
-const statsEl = await component.containerEl.children[1];
+const stats = container.createEl('div', {cls: "stats"});
+const percent = stats.createEl('h6', {cls: "percent", text: "0%"});
+const ratio = stats.createEl('h6', {cls: "ratio", text: "0/0"});
+
+const leftPB = component.containerEl.children[0].children[0];
+const percentEl = component.containerEl.children[1].children[0];
+const ratioEl = component.containerEl.children[1].children[1];
 
 // Clean up event listener when the script is unloaded
 async function updateProgressBar() {
@@ -95,7 +100,8 @@ async function updateProgressBar() {
 		const completed = listItems.filter((listItem) => 'task' in listItem && listItem['task'] === 'x').length;
 		const completedFill = Math.floor(completed * (100 / totalTasks));
 		leftPB.setAttribute("style", `width: ${completedFill}%`);
-		statsEl.innerText = `${completed}/${totalTasks}`;
+		percentEl.innerText = `${((completed/totalTasks) * 100).toFixed(2)}%`
+		ratioEl.innerText = `${completed}/${totalTasks}`;
 	} catch (error) {
 		console.error('Error updating progress bar: ', error);
 	}
@@ -111,15 +117,37 @@ function updateProgressBarHandler() {
 component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHandler));
 ```
 ## :LiSun: Morning
-<% tp.file.include("[[Morning Template]]") %>
+- [ ] Morning Routine
+	- [ ] Take Adderall/vitamin D
+	- [ ] Make bed
+	- [ ] Breakfast
+	- [ ] Tidy kitchen
+	- [ ] Tea
+	- [ ] Work Outfit
+	- [ ] Clean teeth
+	- [ ] Clean up Microsoft To-Do List
+	- [ ] Check Messages and emails
+	- [ ] Review/reform todo list
+	- [ ] Leechblock sites
+	- [ ] Personal Standup
 ## :LiBriefcase: Professional
-<% tp.file.include("[[Professional Template]]") %>
+- [ ] Professional Routine
+	- [ ] Leetcode
+	- [ ] Job Applications
 ## :LiPencilRuler: Project
-<% tp.file.include("[[Project Template]]") %>
 ## :LiHome: Personal
-<% tp.file.include("[[Personal Template]]") %>
+- [ ] Personal Routine
+	- [ ] Work out
+	- [ ] At least 1 Older Hobonichi
 ## :LiMoon: Evening
-<% tp.file.include("[[Evening Template]]") %>
+- [ ] 23:45 Evening Routine
+	- [ ] Tomorrow To-do
+	- [ ] Brush/floss/mouth wash
+	- [ ] wash face
+	- [ ] little bit of moisturizer
+	- [ ] tretinoin
+	- [ ] hobonichi
+	- [ ] no technology 1 hour before bed
 # :LiUserPen: Personal Stand Up
 ## :LiZap: Energy Level
 *How are you feeling?*

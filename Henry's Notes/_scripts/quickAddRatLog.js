@@ -74,8 +74,11 @@ module.exports = async function addRatLog(params) {
     // Create list item header for log event
     const eventList = listHeader + roomSelection + "**: " + input;
 
+    // Ending anchor and jump to top link
+    const jumpToTop = "[[#^73cc94|Jump To Top]] ^f7a1d3"
+
     // Append to Rat Log content
-    const newContent = content + '\n' + preHeaders + eventList;
+    const newContent = content.slice(0, -(jumpToTop.length + 1)) + preHeaders + eventList + '\n\n' + jumpToTop;
     
     await this.app.vault.modify(ratLogFile, newContent);
 

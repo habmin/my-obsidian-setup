@@ -1,0 +1,49 @@
+.task-progress-bar .progress-bar {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 2.3rem;
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 0.7rem 0.0rem 0.7rem 0.0rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: inherit;
+}
+
+.is-mobile .task-progress-bar .progress-bar {
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: linear-gradient(var(--background-primary-alt), var(--background-secondary) 125%)
+}
+
+.task-progress-bar .progress-bar:hover {
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+.task-progress-bar .progress-bar .left-pb {
+    transition: all 0.3s ease;
+    background: initial;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    height: 100%;
+    width:5%;
+    background: 
+        radial-gradient(49% 81% at 45% 47%, var(--color-accent) 0%, #073AFF00 100%),
+        radial-gradient(113% 91% at 17% -2%, hsl(max(calc(var(--accent-h) - 18.77), 0), var(--accent-s), var(--accent-l)) 1%, #FF000000 99%),
+        radial-gradient(142% 91% at 83% 7%, hsl(min(calc(var(--accent-h) + 35.21), 255), max(calc(var(--accent-s) - 16.17%), 100%), calc(var(--accent-l) + 1.37%)) 1%, #FF000000 99%),
+        radial-gradient(142% 91% at -6% 74%, hsl(min(calc(var(--accent-h) + 42.23), 255), var(--accent-s), var(--accent-l)) 1%, #FF000000 99%),
+        radial-gradient(142% 91% at 111% 84%, hsl(min(calc(var(--accent-h) + 71.73), 255), var(--accent-s), var(--accent-l)) 0%, hsl(min(calc(var(--accent-h) + 19.78), 255), var(--accent-s), var(--accent-l)) 100%);
+}
+
+.task-progress-bar .stats {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.task-progress-bar .percent, .task-progress-bar .ratio {
+    margin: 0px !important;
+}
