@@ -2,6 +2,7 @@
 urgencyLevel: 1
 importanceLevel: 1
 smartScore: 1
+eSquare: delete
 cssclasses:
   - smart-goal-grid
 ---
@@ -39,13 +40,10 @@ function makeItems(el, rows, cols) {
   const middle = Math.floor((rows * cols) / 2);
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
-    cell.id = `item-${(c % rows) + 1}-${(cols - (Math.floor(c / cols)))}`;
 	cell.setAttribute('data-urgency', (c % rows) + 1);
 	cell.setAttribute('data-importance', (cols - (Math.floor(c / cols))));
 	cell.addEventListener('click', (event) => {
-		const importance = event.target.getAttribute('data-importance');
-		const urgency = event.target.getAttribute('data-urgency');
-		updateGrid(urgency, importance);
+		updateGrid(event.target.getAttribute('data-urgency'), event.target.getAttribute('data-importance'));
 	})
 	const dot = document.createElement('div');
 	dot.className = "grid-dot";
@@ -118,7 +116,7 @@ function movePosition(urgencyInput, importanceInput) {
 		else {
 			item.classList.remove('current');
 		}
-		if (item.id == `item-${urgencyInput}-${importanceInput}`) {
+		if (item.getAttribute('data-urgency') == urgencyInput && item.getAttribute('data-importance') == importanceInput) {
 			item.childNodes[0].style.display = "block";
 		}
 		else {
@@ -140,12 +138,16 @@ async function updateGrid(urgencyInput, importanceInput) {
 		const fileContent = await app.vault.read(file);
 		const lines = fileContent.split('\n');
 		const replace = `urgencyLevel: ${urgencyInput}
-importanceLevel: ${urgencyInput}
-smartScore: ${urgencyInput * importanceInput}`;
-		lines.splice(1, 3, replace);
+importanceLevel: ${importanceInput}
+smartScore: ${urgencyInput * importanceInput}
+eSquare: ${decisionClass(urgencyInput, importanceInput)}`;
+		lines.splice(1, 4, replace);
 		await app.vault.modify(file, lines.join('\n'));
 	} catch (error) {
 		console.error('Error updating grid: ', error);
 	}
 }
 ```
+## Deadlines
+## Action Items
+# Timeline
