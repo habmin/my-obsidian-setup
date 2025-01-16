@@ -1,0 +1,126 @@
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+}
+
+.smart-goal-grid .grid-container {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.smart-goal-grid .grid-box {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.smart-goal-grid .text-container {
+    display: initial;
+    margin-top: 2rem;
+}
+
+.smart-goal-grid .grid-lines {
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    width: 91%;
+    height: 91%;
+    z-index: -1;
+    display: grid;
+    grid-gap: 0rem;
+    border: 1px solid #9b9b9b;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+.smart-goal-grid .grid-items {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 0rem;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+.smart-goal-grid .grid-item-pos {
+    padding: 0;
+    text-align: center;
+    border: 1px solid #c7c7c757;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.10s ease, background-color 0.3s ease;
+}
+
+.smart-goal-grid .grid-item-pos:hover {
+    border: 3px solid #c7c7c7ec;
+}
+
+.smart-goal-grid .grid-item-line {
+    padding: 0;
+    border: 1px solid #353535;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .smart-goal-grid .decision {
+    transition: background-color 0.3s ease;
+} */
+
+.smart-goal-grid .do {
+    background-color: rgba(190, 72, 72, 0.2);
+}
+
+.smart-goal-grid .do.current {
+    background-color: rgba(190, 72, 72, 0.8);
+}
+
+.smart-goal-grid .delegate {
+    background-color: rgba(66, 109, 184, 0.2);
+}
+
+.smart-goal-grid .delegate.current {
+    background-color: rgba(66, 109, 184, 0.8);
+}
+
+.smart-goal-grid .schedule {
+    background-color: rgba(70, 130, 128, 0.2);
+}
+
+.smart-goal-grid .schedule.current {
+    background-color: rgba(70, 130, 128, 0.8);
+}
+
+.smart-goal-grid .delete {
+    background-color: rgba(130, 158, 90, 0.2);
+}
+
+.smart-goal-grid .delete.current  {
+    background-color: rgba(130, 158, 90, 0.8);
+}
+
+.smart-goal-grid .grid-dot {
+    display: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #e4e4e4;
+    border-radius: 50%;
+}
+
+.smart-goal-grid .grid-slider {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.smart-goal-grid .grid-slider .slider {
+    width: 92%;
+}
