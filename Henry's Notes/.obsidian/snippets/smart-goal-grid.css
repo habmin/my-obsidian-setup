@@ -98,18 +98,18 @@
     background-color: rgba(70, 130, 128, 0.8);
 }
 
-.smart-goal-grid .delete {
+.smart-goal-grid .shelve {
     background-color: rgba(130, 158, 90, 0.2);
 }
 
-.smart-goal-grid .delete.current  {
+.smart-goal-grid .shelve.current  {
     background-color: rgba(130, 158, 90, 0.8);
 }
 
 .smart-goal-grid .grid-dot {
     display: none;
-    height: 1rem;
-    width: 1rem;
+    height: 1.15rem;
+    width: 1.15rem;
     background-color: #e4e4e4;
     border-radius: 50%;
 }
