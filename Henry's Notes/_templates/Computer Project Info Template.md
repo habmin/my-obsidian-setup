@@ -11,7 +11,8 @@ deployed: false
 archived: false
 deploy-location: 
 team-members: 
-tags:
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
+tags: 
 ---
 # Description
 

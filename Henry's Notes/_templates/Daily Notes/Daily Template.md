@@ -1,4 +1,5 @@
 ---
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
 cssclasses:
   - daily-note
   - task-progress-bar
@@ -118,9 +119,10 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 ```
 ## :LiSun: Morning
 - [ ] Morning Routine
-	- [ ] Take Adderall/vitamin D
+	- [ ] Take Adderall
 	- [ ] Make bed
 	- [ ] Breakfast
+	- [ ] vitamin D
 	- [ ] Tidy kitchen
 	- [ ] Tea
 	- [ ] Work Outfit
@@ -131,14 +133,12 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 	- [ ] Leechblock sites
 	- [ ] Personal Standup
 ## :LiBriefcase: Professional
-- [ ] Professional Routine
-	- [ ] Leetcode
-	- [ ] Job Applications
+- [ ] Leetcode
+- [ ] Job Applications
 ## :LiPencilRuler: Project
 ## :LiHome: Personal
-- [ ] Personal Routine
-	- [ ] Work out
-	- [ ] At least 1 Older Hobonichi
+- [ ] Work out
+- [ ] [[Hobonichi Effort|At least 1 Older Hobonichi]]
 ## :LiMoon: Evening
 - [ ] 23:45 Evening Routine
 	- [ ] Tomorrow To-do
@@ -146,7 +146,7 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 	- [ ] wash face
 	- [ ] little bit of moisturizer
 	- [ ] tretinoin
-	- [ ] hobonichi
+	- [ ] today's hobonichi
 	- [ ] no technology 1 hour before bed
 # :LiUserPen: Personal Stand Up
 ## :LiZap: Energy Level

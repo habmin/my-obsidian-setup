@@ -9,7 +9,8 @@ description:
 first-published: ""
 status: Not Read
 finished-date: ""
-tags:
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
+tags: 
 ---
 # `VIEW[{title}][text]`
 By `VIEW[{authors}][text]` from `VIEW[{publisher}][text]`

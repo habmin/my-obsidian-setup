@@ -15,6 +15,7 @@ made-before: false
 tags: 
 metabind-servings: 
 metabind-render-addon: false
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
 cssclasses:
   - recipe-note
 ---

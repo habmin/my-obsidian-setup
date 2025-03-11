@@ -22,7 +22,8 @@ started-process: false
 num-stages: 
 end-date: 
 result: 
-tags:
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
+tags: 
 ---
 # Overview
 - Company: `VIEW[{company}][link]`

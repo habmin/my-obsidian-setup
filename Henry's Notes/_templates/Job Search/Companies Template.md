@@ -14,7 +14,8 @@ website:
 linkedin: 
 work-connections: 
 watch: false
-tags:
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
+tags: 
 ---
 # Overview
 - Name: `VIEW[{name}][text]`

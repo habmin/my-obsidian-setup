@@ -12,7 +12,8 @@ percent-read:
 time-spent-reading: 
 dates-last-read: []
 rating: 
-tags:
+createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
+tags: 
 ---
 `VIEW[!\[\[{cover}|200\]\]][text(renderMarkdown)]`
 # `VIEW[{title}][text]`
