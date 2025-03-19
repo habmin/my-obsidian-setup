@@ -5,6 +5,7 @@ topics:
 up:
 in:
   - Efforts
+  - Element
 elementStatus: seed
 difficulty: 0
 ---
@@ -108,7 +109,7 @@ async function updateLog(property, value) {
 		const lines = fileContent.split('\n');
 
 		const inputDate = new Date();
-		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ${file.basename} changed to ${property}: ${value}`;
+		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ES: ${file.basename} changed to ${property}: ${value}`;
 		const timelineIndex = lines.findIndex(line => line.trim() === '# Log');
 		lines.splice(timelineIndex + 1, 0, appendTimeline);
 
@@ -131,6 +132,8 @@ difficultyInput.children[0].children[0].addEventListener("change", (event) => up
 > WHERE contains(up, [[<% tp.file.title %>]])
 > SORT createdAt desc
 > ```
+
+> [!web-link]+ Web Links
 ## Use
 ## Motivation
 ## Example

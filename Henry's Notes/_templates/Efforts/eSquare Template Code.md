@@ -122,7 +122,7 @@ async function updateGrid(urgencyInput, importanceInput) {
 
 		// auto-log change
 		const inputDate = new Date();
-		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ${file.basename} changed to ${returnDecision(urgencyInput, importanceInput)}`;
+		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ES: ${file.basename} changed to ${returnDecision(urgencyInput, importanceInput)}`;
 		const timelineIndex = lines.findIndex(line => line.trim() === '# Log');
 		lines.splice(timelineIndex + 1, 0, appendTimeline);
 		await app.vault.modify(file, lines.join('\n'));

@@ -140,11 +140,12 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 - [ ] Work out
 - [ ] [[Hobonichi Effort|At least 1 Older Hobonichi]]
 ## :LiMoon: Evening
-- [ ] 23:45 Evening Routine
+- [ ] 23:30 Evening Routine
 	- [ ] Tomorrow To-do
-	- [ ] Brush/floss/mouth wash
+	- [ ] demodex treatment
 	- [ ] wash face
 	- [ ] little bit of moisturizer
+	- [ ] Brush/floss/mouth wash
 	- [ ] tretinoin
 	- [ ] today's hobonichi
 	- [ ] no technology 1 hour before bed

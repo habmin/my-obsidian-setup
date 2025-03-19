@@ -11,8 +11,8 @@ difficulty: 0
 ---
 <%*
 const fileName = tp.file.title;
-const relPath = tp.file.folder
-const tagName = fileName.toLowerCase().substring(0, tp.file.title.lastIndexOf(" ")).replace(/\s/g, '');
+const relPath = tp.file.folder;
+const tagName = fileName.toLowerCase().trim().substring(0, fileName.lastIndexOf(" ")).replace(/\s/g, '');
 -%>
 # Status
 ```js-engine
@@ -114,7 +114,7 @@ async function updateLog(property, value) {
 		const lines = fileContent.split('\n');
 
 		const inputDate = new Date();
-		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ${file.basename} changed to ${property}: ${value}`;
+		const appendTimeline = `- **${inputDate.toISOString().substring(0,10)} ${inputDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true })}** - ES: ${file.basename} changed to ${property}: ${value}`;
 		const timelineIndex = lines.findIndex(line => line.trim() === '# Log');
 		lines.splice(timelineIndex + 1, 0, appendTimeline);
 

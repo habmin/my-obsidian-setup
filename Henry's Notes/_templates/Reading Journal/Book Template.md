@@ -10,10 +10,11 @@ cover: _attachments/_book-covers/placeholder.png
 status: Not Read
 percent-read: 
 time-spent-reading: 
-dates-last-read: []
+finished-date: 
+dates-last-read: 
 rating: 
 createdAt: <% tp.date.now("YYYY-MM-DDTHH:mm") %>
-tags: 
+tags:
 ---
 `VIEW[!\[\[{cover}|200\]\]][text(renderMarkdown)]`
 # `VIEW[{title}][text]`
