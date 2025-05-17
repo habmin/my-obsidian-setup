@@ -2,4 +2,7 @@
     .print a{ 
         color:  #0000EE; 
     }
+    .print em{ 
+        color:  #000000; 
+    }
 }
