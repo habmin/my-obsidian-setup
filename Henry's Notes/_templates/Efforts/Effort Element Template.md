@@ -125,7 +125,7 @@ difficultyInput.children[0].children[0].addEventListener("change", (event) => up
 ```
 ## eSquare
 <% tp.file.include("[[eSquare Template Code]]") %>
-# Description
+# External Links
 > [!link-in]+ Linked Notes
 > ```dataview
 > LIST
@@ -134,6 +134,7 @@ difficultyInput.children[0].children[0].addEventListener("change", (event) => up
 > ```
 
 > [!web-link]+ Web Links
+# Description
 ## Use
 ## Motivation
 ## Example

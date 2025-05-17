@@ -121,33 +121,39 @@ component.registerEvent(this.app.metadataCache.on('changed', updateProgressBarHa
 - [ ] Morning Routine
 	- [ ] Take Adderall
 	- [ ] Make bed
+	- [ ] Work Out
 	- [ ] Breakfast
 	- [ ] vitamin D
 	- [ ] Tidy kitchen
 	- [ ] Tea
 	- [ ] Work Outfit
 	- [ ] Clean teeth
+# :LiPower: Startup
+- [ ] Startup Routine
 	- [ ] Clean up Microsoft To-Do List
 	- [ ] Check Messages and emails
 	- [ ] Review/reform todo list
 	- [ ] Leechblock sites
 	- [ ] Personal Standup
 ## :LiBriefcase: Professional
-- [ ] Leetcode
-- [ ] Job Applications
 ## :LiPencilRuler: Project
 ## :LiHome: Personal
-- [ ] Work out
 - [ ] [[Hobonichi Effort|At least 1 Older Hobonichi]]
+# :LiPowerOff: Shutdown
+- [ ] Work prep
+	- [ ] Consolidate Work Notes
+	- [ ] Clothes
+	- [ ] Lunch
+	- [ ] Bag
+- [ ] Tomorrow To-do
+- [ ] today's hobonichi
 ## :LiMoon: Evening
-- [ ] 23:30 Evening Routine
-	- [ ] Tomorrow To-do
-	- [ ] demodex treatment
+- [ ] 23:00 Evening Routine
 	- [ ] wash face
 	- [ ] little bit of moisturizer
 	- [ ] Brush/floss/mouth wash
+	- [ ] Zyrtec
 	- [ ] tretinoin
-	- [ ] today's hobonichi
 	- [ ] no technology 1 hour before bed
 # :LiUserPen: Personal Stand Up
 ## :LiZap: Energy Level
