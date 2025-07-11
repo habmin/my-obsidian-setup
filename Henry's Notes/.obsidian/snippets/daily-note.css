@@ -200,8 +200,9 @@
     margin: 0 0.5rem 0 0.2rem;
 }
 
-.energy-icon-div {
+.energy-level-div, .energy-icon-div {
     display: flex;
+    flex-flow: row nowrap;
     align-items: center;
     margin: 0;
 }
