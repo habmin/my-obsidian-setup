@@ -1,0 +1,8 @@
+.callout-title { align-items: center; }
+
+.callout-title:has(h1) .svg-icon { width: var(--h1-size); height: var(--h1-size); }
+.callout-title:has(h2) .svg-icon { width: var(--h2-size); height: var(--h2-size); }
+.callout-title:has(h3) .svg-icon { width: var(--h3-size); height: var(--h3-size); }
+.callout-title:has(h4) .svg-icon { width: var(--h4-size); height: var(--h4-size); }
+.callout-title:has(h5) .svg-icon { width: var(--h5-size); height: var(--h5-size); }
+.callout-title:has(h6) .svg-icon { width: var(--h6-size); height: var(--h6-size); }
