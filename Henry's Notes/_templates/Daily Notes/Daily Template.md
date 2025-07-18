@@ -4,6 +4,7 @@ cssclasses:
   - daily-note
   - task-progress-bar
   - bannerimg
+  - js-engine-hide-edit-stats
 energyLevel: Pushing Through
 ---
 <%*
@@ -14,8 +15,9 @@ const numOfFiles = this.app.vault.getFolderByPath('_attachments/_banners/_daily_
 ![[<% (daysEpoch % numOfFiles).toString().padStart(3, '0') %>.jpg##bannerimgfade]]
 > [!bannericonc]
 > <% moment(fileDate).format('MMM D YY') %>
-```dataviewjs
-await dv.view("_scripts/dv-dailynote-navbar", {currentFileDate: await this.app.workspace.getActiveFile().name.slice(0, 10)});
+```js-engine
+const {DailyNoteNavbar} = await cJS();
+await DailyNoteNavbar.create(this.app, container, context)
 ```
 # :LiListTodo: Tasks 
 ```js-engine

@@ -1,0 +1,7 @@
+.js-engine-hide-edit-stats .js-engine-execution-stats-button {
+    display: none !important;
+}
+
+.js-engine-hide-edit-stats .edit-block-button {
+    display: none !important;
+}
